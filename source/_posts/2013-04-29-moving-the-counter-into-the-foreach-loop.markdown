@@ -21,11 +21,13 @@ for thing in stuff:
 
 ```
 
+Python comes with this nice `for i in list` formulation, so taking care of a counter seperatly seamed wrong.
+
 ----
 update
 
 
-Big thanks to bla for pointing me to ´enumerate`
+Big thanks to [Rafa Rodríguez](https://plus.google.com/108719046880594833475/posts) for pointing me to ´enumerate`
 
 ``` python
 stuff = ["some thing", "some thing else"]
@@ -39,7 +41,6 @@ You can skipp the rest :) .
 
 ----
 
-Python comes with this nice `for i in list` formulation, so taking care of a counter seperatly seamed wrong.
 Indeed I came up with the following refactoring:
 
 ``` python 
