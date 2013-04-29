@@ -8,7 +8,7 @@ categories: python
 
 Recently I did a little code review for a friend of mine.
 He needed a counter while iterating items of a list.
-He solved it the same way I did - may times befor, always a little bit annoyed by the fact that I needed to declare and incredent the counter myself.
+He solved it the same way I did - many times befor, always a little bit annoyed by the fact that I needed to declare and incredent the counter myself.
 
 ``` python 
 
@@ -20,6 +20,24 @@ for thing in stuff:
   i += 1
 
 ```
+
+----
+update
+
+
+Big thanks to bla for pointing me to ´enumerate`
+
+``` python
+stuff = ["some thing", "some thing else"]
+
+for i, thing in enumerate(stuff):
+  print "processing item {} of {}".format(i + 1, len(stuff))
+
+```
+
+You can skipp the rest :) .
+
+----
 
 Python comes with this nice `for i in list` formulation, so taking care of a counter seperatly seamed wrong.
 Indeed I came up with the following refactoring:
