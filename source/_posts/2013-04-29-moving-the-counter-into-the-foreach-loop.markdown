@@ -27,7 +27,7 @@ Python comes with this nice `for i in list` formulation, so taking care of a cou
 update
 
 
-Big thanks to [Rafa Rodríguez](https://plus.google.com/108719046880594833475/posts) for pointing me to ´enumerate`
+Big thanks to [Rafa Rodríguez](https://plus.google.com/108719046880594833475/posts) for pointing me to `enumerate`
 
 ``` python
 stuff = ["some thing", "some thing else"]
