@@ -143,6 +143,8 @@ You can of course white functional code in python using map. However at no point
 does pyhton ensure that you do not change the datastructure in place.
 
 
+### use require instead of use
+
 Namespaces and including and referencing code from other packages was vey
 confusing to me, because to do so you can use `(use)` `(require)` and `(import)`.
 
@@ -159,21 +161,107 @@ Where `require` lets you alias packages:
 
 ```clojure
 (ns my.core
-  (:require [my-lib.core :as c]))
-(c/hello "world")
+  (:require [my-lib.core :as core]))
+(core/hello "world")
 ```
 
+### inject state into functions
 
-- don't overuse [use](http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/use)
-	- use [require](http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/require) instead
-- inject state via function arguments, done this one right, see [Stuart Sierrra: Clojure in the Large](http://www.infoq.com/presentations/Clojure-Large-scale-patterns-techniques)
-- don't overuse [->>](http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/->>) [let](http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/let) is ok in many cases
-- Write test!! despite the REPL (was a bit to lazy in that regard)
-	- The default Test framework seams to be [midje](https://github.com/marick/Midje)
-	- but I liked my classical TDD/BDD DSL so I used [speclj](http://speclj.com/)
-- prallel [pmap](http://clojuredocs.org/clojure_core/clojure.core/pmap) does the trick in many cases
-	- start at top level
-- want to experiment more with [reducers](http://clojure.com/blog/2012/05/08/reducers-a-library-and-model-for-collection-processing.html)!
+One thing that stuck right in my head from the beginning was everything a 
+function operates on should be past in as an argument instead of having some
+var. Stuard Sierra gave a talk titled 
+[Clojure in the Large](http://www.infoq.com/presentations/Clojure-Large-scale-patterns-techniques)
+that points out why this is the right way to do things and gives tips and 
+examples on how to achive this goal in the large.
+
+
+### Don't overuse ->> and ->
+
+It took me a while to understand the 
+[->](http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/->) 
+and 
+[->>](http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/->>) 
+operations.
+You can use thouse to build a pipeline. Which is a beautyfull construct in
+many situations. 
+
+
+```clojure
+; using plain clojure calls:
+; one has to start at the last call, making this difficult to follow
+(filter #(= 0 (rem % 4)) ; only include the ones that are multiple of 4
+        (map #(+ 1 %) ; add one to each
+             (map #(* 3 %) ; multiply each by 3
+                  (filter odd? ; only include the odd ones
+                          (range 20))))) ; numbers from 0 to 19
+; => (4 16 28 40 52)
+
+; using the ->> pipe, where the result of the last call
+; is used as the last argument in the next function
+(->> (range 20) 
+     (filter odd?)
+     (map #(* 3 %))
+     (map #(+ 1 %))
+     (filter #(= 0 (rem % 4))))
+; => (4 16 28 40 52)
+```
+
+However when you find yourself writing huge anonymous functions
+that draw from previus defined variables for example in a 
+[let](http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/let)
+it is probably time to reconsider your code :) and use plain let to
+store and name intermediat results.
+
+
+### Test first!
+
+This is and remains true. You shall test first and implement later!
+
+Beeing new to the language a REPL help me a lot to experiment with code
+snippets quickly, by seeing the output of different calls.
+Especially when you are not sure how the output of a function looks exactly
+it's nice to play around with it a little in the REPL.
+
+However I missing going back and fixiate this in test cases.
+I was got lazy and thought maybe you can cut this corner. Gues what it came back
+to bite me only 2 weeks in. Write tests!
+
+The default Test framework for Clojure seams to be 
+[midje](https://github.com/marick/Midje).
+However I liked my classical TDD/BDD DSL so I used [speclj](http://speclj.com/).
+Running `lein spec -a` on the command line will autotest all the functions and
+rerun test of files that change.
+It does keep a JVM running so its fast in executing the test.
+Should you however remove definitions you need to restart the call, because
+it will keep the old definition around. So if you still have code that depends
+on the allegedly removed function your test will not fail until you restart the
+JVM.
+
+
+### Making things run on multiple cores is easy.
+
+If you use `map` a lot making things run on multiple cores is easy:
+just replace `map` with a `pmap`. This will execute the function using
+multiple cores.
+While this is a valid and easy step it only is beneficial if the function
+takes some time to run. Otherwise the overhead of `pmap` will midigate the effect
+and you end up beeing slower.
+So start at the out calls and see how far you can get.
+
+If you need better prallel performance Clojure gives you the new 
+[reducers](http://clojure.com/blog/2012/05/08/reducers-a-library-and-model-for-collection-processing.html).
+They sacrifice lazyness to give you a fork join abstraction that uses map
+reduce semantics.
+I did read the article, but did not have the time to experiment a lot with it.
+
+Also [core.async](https://github.com/clojure/core.async)
+gives you Go like lightweight threads and channel semantics.
+Drew Olson has a nice 
+[article comparing clojure core.async with go](http://blog.drewolson.org/blog/2013/07/04/clojure-core-dot-async-and-go-a-code-comparison/).
+
+
+
+
 - [pre and post assertions](http://blog.fogus.me/2009/12/21/clojures-pre-and-post/) are a blessing and so easy to use
 - you need only a hand full of vars. In many cases none at all. [Ask Stuart](http://www.infoq.com/presentations/Concurrency-Clojure) ;) 
 - they introduce global state, so use with utmost caution
