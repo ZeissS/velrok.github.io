@@ -218,7 +218,9 @@ Here we will cover the most basic functions:
 
 ## Vars
 
-Now if you want to store a value under a name for later use you can use `var`s.
+
+Now if you want to store a value globally (in the current namespace)
+under a name for later referral you can use `var`s.
 A `var` is a data type in clojure that points to a value.
 
 You can define a var like this:
@@ -247,6 +249,62 @@ println
 You will get the actual function.
 
 
+## Functions
+
+Until now we only used values and predefined functions.
+In a real project you mainly write your own functions that take values and
+combine other functions to produce new values.
+
+In this section we will define our own recursive implementation of
+the factorial function as an example.
+
+This is how you create a function in Clojure:
+```clojure
+(fn [arg1 arg 2]
+  (println arg1 arg2))
+```
+
+This will define a anonymous function. We could now combine this with a var
+to reference it later:
+
+```clojure
+(def my-fn (fn [arg1 arg2]
+             (println arg1 arg2)))
+```
+
+Because this is a very common task to do, clojure gives you `defn`, which does
+exactly the same, while being more concise.
+```clojure
+(defn my-fn [arg1 arg2]
+  (println arg1 arg2))
+```
+
+You can call this function the same way you would any other function:
+```clojure
+(my-fn "hello" "world")
+```
+
+### The same Function with Different Arety 
+
+Your can define functions that are defined for different areties and execute
+different code.
+
+```clojure
+(defn greet 
+  ([name]
+    (println name "says: hello"))
+  ([name greeting]
+    (println name "says:" greeting)))
+
+(greet "Jimmy")
+(greet "Jimmy" "Wilkommen!")
+```
+
+### Tail Recursion
+
+As we all learned writing recursive code, while elegant, can also blow
+your stack if it's nested to deeply.
+When you write your code in a way, that has no dependency on the previous 
 
 
 
