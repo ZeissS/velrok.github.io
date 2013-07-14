@@ -249,6 +249,82 @@ println
 You will get the actual function.
 
 
+## Flow Control
+
+Before we start writting our own functions lets add some code controll tools
+to our reportuar.
+
+Here is how a if / else contruct looks like in Clojure:
+
+```clojure
+(if true
+  "YES"
+  "NO")
+```
+
+The if macro takes three arguments: the first is the condition, secound is a
+list that should be executed in the true case and the third is a list that should
+be executed in the else case.
+
+You probably noticed that if is not a function but a *macro*.
+Remember that Clojure code is data. Basically its converted to a bunch of
+lists. Now a macro is a programm that is like a hook into this system.
+When discovert during reading the content of if is send to the if macro, which
+is a programm that operates on the *code* you have written.
+
+Optically you can't distinguish functions from macros, nor should you. Writting
+macros you can use all the same tools and functions that you norally have at
+your disposall, however you need to be extra carefull about naming clashes.
+
+*Now why is if a macro and not a function?* The answer is, because all arguments
+to a function are evaluated and their results are pased in as values.
+Now in our case this would trigger the printing of both "YES" *and* "NO".
+Since if is a macro is can decide based on the condition which of both lists
+should be executed.
+
+You see in the world of macros is very meta and there is a completly new set
+of concerns when writing them. The golden rule is: always prefere writing a
+function over writing a macro.
+
+We will not cover macros in this article, because they are not part of getting
+started ;). Nonetheless it's good to have a basic understanding.
+
+
+## Side effects with do
+
+That is all well and good, but what if you want to print *and* return something
+in case some condition is met? That is where `do` come is.
+With `do` you can group function calls:
+
+```clojure
+(if true
+  (do
+    (println "YES")
+    "YES"))
+```
+
+This prints YES and returns a string containing "YES". Now the do is the 
+only list to execute if the condition if true. `if` allows you to omit the else
+case, as you propably guested.
+
+Everytime you use do you are writing a function that is not pure.
+The function does things besides than constucting something to return.
+`print` for example does print to the stdout and return `nil`.
+
+If you use do you explicitly express that you do some work that
+might have nothing to do with the construction of return values.
+
+This side effects are things that acually make a programm usefull, but they are
+also dangerous, because they manuplulate a implizit global state.
+
+Everytime you find yourself writing code that is explicitly part of the thing
+you are returning, you should be utterly awar what you are doing.
+
+Code like this is common in tradittional non functional programming languages,
+but it's also one of the most hardest things to debug (reconstructing the 
+implicit global state that let to the error).
+
+
 ## Functions
 
 Until now we only used values and predefined functions.
@@ -261,7 +337,7 @@ the factorial function as an example.
 This is how you create a function in Clojure:
 ```clojure
 (fn [arg1 arg 2]
-  (println arg1 arg2))
+  (str arg1 arg2))
 ```
 
 This will define a anonymous function. We could now combine this with a var
@@ -269,14 +345,14 @@ to reference it later:
 
 ```clojure
 (def my-fn (fn [arg1 arg2]
-             (println arg1 arg2)))
+             (str arg1 arg2)))
 ```
 
-Because this is a very common task to do, clojure gives you `defn`, which does
-exactly the same, while being more concise.
+Because this is a very common task to do - clojure gives you `defn`, which does
+exactly the same while being more concise.
 ```clojure
 (defn my-fn [arg1 arg2]
-  (println arg1 arg2))
+  (str arg1 " " arg2))
 ```
 
 You can call this function the same way you would any other function:
@@ -284,17 +360,17 @@ You can call this function the same way you would any other function:
 (my-fn "hello" "world")
 ```
 
-### The same Function with Different Arety 
+### The same Function with Different Arity 
 
-Your can define functions that are defined for different areties and execute
+Your can define functions that are defined for different arities and execute
 different code.
 
 ```clojure
 (defn greet 
   ([name]
-    (println name "says: hello"))
+    (str name "says: hello"))
   ([name greeting]
-    (println name "says:" greeting)))
+    (str name "says: " greeting)))
 
 (greet "Jimmy")
 (greet "Jimmy" "Wilkommen!")
@@ -302,9 +378,38 @@ different code.
 
 ### Tail Recursion
 
-As we all learned writing recursive code, while elegant, can also blow
+We all learned writing recursive code - while elegant - can also blow
 your stack if it's nested to deeply.
 When you write your code in a way, that has no dependency on the previous 
+stack frame, the compile can apply [tail recursion](http://c2.com/cgi/wiki?TailRecursion)
+which means it has no need to store the old stack frame or create a new one.
+
+This enables space unlimited recursion depth, so you don't need to worry that
+you will blow your stack. However endless recursions will run forever :) .
+
+To use tail recursion in Clojure you use the `recur` function, which calls
+the same function, with the same arity.
+
+Now we have all the tools we need to write our factorial function:
+
+```clojure
+(defn !
+  ([n]
+   (! 0 n))
+  ([sum n]
+   (if (zero? n)
+     sum
+     (recur (+ sum n)
+            (dec n)))))
+```
+
+You see we use all the constructs we have learned so far here.
+If called with one argument we call the same function giving it a initial sum
+value of 0.
+The `(if (zero? n))` check if our cancellation condition, otherwise we
+to a tail recursion passing it the new sum and a decreased value of n.
+
+
 
 
 
@@ -341,22 +446,3 @@ When you write your code in a way, that has no dependency on the previous
 
 ## Code is Data ([Homoiconicity](http://en.wikipedia.org/wiki/Homoiconicity) ) 
 
-
-
-
-
-<!-- more -->
-<div id="disqus_thread"></div>
-<script type="text/javascript">
-    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
-    var disqus_shortname = 'meinsinn'; // required: replace example with your forum shortname
-
-    /* * * DON'T EDIT BELOW THIS LINE * * */
-    (function() {
-        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
