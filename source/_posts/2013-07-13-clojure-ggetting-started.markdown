@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Clojure Getting Started"
+title: "Clojure Getting Started: Setting Up"
 date: 2013-07-13 09:59
 comments: true
 categories: clojure programming tutorial
@@ -9,7 +9,9 @@ categories: clojure programming tutorial
 
 ## Setting Up a Project 
 
-Clojure runs on the JVM so you need a recent [JDK](http://www.oracle.com/technetwork/java/javase/downloads/index.html) version installed
+Clojure runs on the JVM so you need a recent 
+[JDK](http://www.oracle.com/technetwork/java/javase/downloads/index.html) 
+version installed
 (Java 6 or newer should do).
 
 To create a new Clojure project we use [Leiningen](https://github.com/technomancy/leiningen).
@@ -31,11 +33,11 @@ To create our getting started project (we will name it greenfield-clojure) run:
 lein new greenfield-clojure
 ```
 
-This will create a new fold. For the rest of this writing all file paths will 
+This will create a new folder. For the rest of this writing all file paths will 
 be relative to this folder.
 
 
-You should see a ***project.clj*** file looking something like this
+You should see a `project.clj` file looking something like this
 
 ```clojure
 (defproject greenfield-clojure "0.1.0-SNAPSHOT"
@@ -81,10 +83,23 @@ Now we can start and enter a simple **hello world** into the repl:
 (println "Hello world!")
 ```
 
+## Setting Up vim 
+
+- fireplace.vim
+- rainbow parents 
+
+
+## Structuring Code 
+
+- files and how they correspond to namespaces
+- how to include stuff (use / require / import)
+
+
+
 ## Code is Data ([Homoiconicity](http://en.wikipedia.org/wiki/Homoiconicity)) 
 
 You might have noticed that the parentheses are at place funny 
-(in case you are use to C like languages).
+(in case you are used to C like languages).
 This is because Clojure is homoiconic, which is to say that code is data.
 You are basically programming in Clojures [AST](http://en.wikipedia.org/wiki/Abstract_syntax_tree).
 Clojure is a dialect of [LISP](https://en.wikipedia.org/wiki/Lisp_(programming_language)), 
@@ -142,7 +157,7 @@ Here is a listing of all the basic data types in Clojure.
 
 (list (1 2 3))   ; single linked list
 [1 2 3]          ; vector (constant random access)
-{:a 2, :b 4}     ; a map (called hash or dic in other languages)
+{:a 2, :b 4}     ; a map (called hash or dict in other languages)
                  ; a succession of key value pairs. You an skipp the , if you like
 #{1 2 3}         ; a set
 ```
@@ -159,12 +174,16 @@ sequence of this three letters `k` `e` and `y` .
 They are used as what their name suggests: keywords ;) .
 I hope this is somewhat clear, it's always tricky to explain this kind of things.
 
-Maps can use arbitrary vales as keys.
+Maps can use arbitrary values as keys.
 This is also valid:
 ```clojure
 {[1 2 3] {:first "a"
           :second "b"}}
 ```
+
+This is a map that uses the vector `[1 2 3]` as a key with another map
+as its value. The other map uses plain keywords (`:first` and `:second`)
+as keys, which have the strings `"a"` and `"b"` as their values.
 
 clojure.org has a [cheatsheet](http://clojure.org/cheatsheet) on all the data
 types and functions that create / manipulate them.
@@ -176,19 +195,22 @@ types and functions that create / manipulate them.
 Maybe you were a little surprised by the fact that every value can be used
 as a key in a map. Many programming languages have restrictions on that.
 
-The reason why this is not an issue in Clojure, is that in Clojure every data
+Having maps itself as keys in other maps is not an issue in Clojure, 
+because every data
 type is immutable (once create it can not be changed).
+In other languages, where this is not the case, you are restricted on the data
+types you can use as keys in maps / dicts / hashes.
 So how does one change things?
 You don't change the thing, you just apply a function that returns a new value.
 
-Think of it like math. If you add 1 to the number 2 you don't change the number
-2. You apply the function + to 2 with the argument 1 and get a 3 back.
-2 will always be the value 2.
+Think of it like math. If you add 1 to the number `2` you don't change the number
+`2`. You apply the function + to `2` with the argument `1` and get a `3` back.
+`2` will always be the value `2`.
 
-In other words you applied a transition function (+) to go to the value 3 from
-the value 2.
+In other words you applied a transition function (+) to go to the value `3` from
+the value `2`.
 
-Of coarse we also want to transition between values that are vectors or maps.
+Of course we also want to transition between values that are vectors or maps.
 The [cheatsheet](http://clojure.org/cheatsheet) has a list of all the functions
 you may want to apply to the different data types.
 Here we will cover the most basic functions:
@@ -251,10 +273,10 @@ You will get the actual function.
 
 ## Flow Control
 
-Before we start writting our own functions lets add some code controll tools
-to our reportuar.
+Before we start writing our own functions lets add some code control tools
+to our disposal.
 
-Here is how a if / else contruct looks like in Clojure:
+Here is how a if / else construct looks like in Clojure:
 
 ```clojure
 (if true
@@ -262,15 +284,15 @@ Here is how a if / else contruct looks like in Clojure:
   "NO")
 ```
 
-The if macro takes three arguments: the first is the condition, secound is a
+The if macro takes three arguments: the first is the condition, second is a
 list that should be executed in the true case and the third is a list that should
 be executed in the else case.
 
 You probably noticed that if is not a function but a *macro*.
 Remember that Clojure code is data. Basically its converted to a bunch of
-lists. Now a macro is a programm that is like a hook into this system.
+lists. Now a macro is a program that is like a hook into this system.
 When discovert during reading the content of if is send to the if macro, which
-is a programm that operates on the *code* you have written.
+is a program that operates on the *code* you have written.
 
 Optically you can't distinguish functions from macros, nor should you. Writting
 macros you can use all the same tools and functions that you norally have at
@@ -305,22 +327,22 @@ With `do` you can group function calls:
 
 This prints YES and returns a string containing "YES". Now the do is the 
 only list to execute if the condition if true. `if` allows you to omit the else
-case, as you propably guested.
+case, as you probably guested.
 
-Everytime you use do you are writing a function that is not pure.
-The function does things besides than constucting something to return.
+Every time you use do you are writing a function that is not pure.
+The function does things besides than constructing something to return.
 `print` for example does print to the stdout and return `nil`.
 
 If you use do you explicitly express that you do some work that
 might have nothing to do with the construction of return values.
 
-This side effects are things that acually make a programm usefull, but they are
-also dangerous, because they manuplulate a implizit global state.
+This side effects are things that actually make a program useful, but they are
+also dangerous, because they manipulate a implicit global state.
 
-Everytime you find yourself writing code that is explicitly part of the thing
-you are returning, you should be utterly awar what you are doing.
+Every time you find yourself writing code that is explicitly part of the thing
+you are returning, you should be utterly aware what you are doing.
 
-Code like this is common in tradittional non functional programming languages,
+Code like this is common in traditional non functional programming languages,
 but it's also one of the most hardest things to debug (reconstructing the 
 implicit global state that let to the error).
 
@@ -406,22 +428,10 @@ Now we have all the tools we need to write our factorial function:
 You see we use all the constructs we have learned so far here.
 If called with one argument we call the same function giving it a initial sum
 value of 0.
-The `(if (zero? n))` check if our cancellation condition, otherwise we
-to a tail recursion passing it the new sum and a decreased value of n.
+The `(if (zero? n))` checks for our cancellation condition, if false we
+do a tail recursion passing it the new sum and a decreased value of n.
 
 
-
-## Setting Up you Editor 
-
-### vim
-
-- fireplace.vim
-- rainbow parens
-
-## Structuring Code 
-
-- files and how they correspond to namespaces
-- how to include stuff (use / require / import)
 
 ## Testing
 
