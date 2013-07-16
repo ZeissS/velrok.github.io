@@ -1,15 +1,4 @@
 ---
-## Setting Up vim 
-
-- fireplace.vim
-- rainbow parents 
-
-
-## Structuring Code 
-
-- files and how they correspond to namespaces
-- how to include stuff (use / require / import)
-
 layout: post
 title: "Clojure Getting Started: Setting Up"
 date: 2013-07-13 09:59
