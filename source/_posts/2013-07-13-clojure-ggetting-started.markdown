@@ -411,8 +411,6 @@ to a tail recursion passing it the new sum and a decreased value of n.
 
 
 
-
-
 ## Setting Up you Editor 
 
 ### vim
@@ -425,18 +423,8 @@ to a tail recursion passing it the new sum and a decreased value of n.
 - files and how they correspond to namespaces
 - how to include stuff (use / require / import)
 
+## Testing
 
-## Functions
-
-- defining functions
-- functions with different arity
-- anonymus functions
-
-
-## Controll Flow
-
-- if
-- case 
 
 ## Code Convention
 
@@ -444,5 +432,4 @@ to a tail recursion passing it the new sum and a decreased value of n.
 - use 2 spaces
 - allign arguments visually
 
-## Code is Data ([Homoiconicity](http://en.wikipedia.org/wiki/Homoiconicity) ) 
 
