@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Clojure Getting Started: Setting Up"
-date: 2013-07-17 00:10
+date: 2013-07-17 10:54
 comments: true
 categories: clojure programming tutorial
 ---
@@ -93,40 +93,39 @@ It's a good start. I can recommend installing [SublimeREPL](https://github.com/w
 Clojure development uses the REPL extensively, so your editor should
 come with some kind of REPL integration.
 
-I found SublimeREPL to be not as stable as I would have liked.
+I found SublimeREPL to be less stable as I would have liked.
 So I switched to vim.
 
-Of course on of the best editors for Clojure is Emacs, but I just can't get
+One of the best editors for Clojure is Emacs, but I just can't get
 used to it :). All Emacs folks out there: please leave plugin recommendations
 in the comments, I will integrate them.
 
 ### vim 
 
-As mentioned above I switched from Sublime to vim, because its REPL integration
-using the [fireplace.vim](https://github.com/tpope/vim-fireplace) plugin,
+As mentioned above I switched from Sublime to vim, because of its better REPL 
+integration
+via the [fireplace.vim](https://github.com/tpope/vim-fireplace) plugin,
 proved to be more stable.
 
 Once your setup is complete you will be able to send the complete file or
-complete calls under the cursor to the REPL by pressing a key or a combination
-of keys.
-Make sure this works we will use it in the future of this tutorial.
+single calls - under the cursor - to the REPL.
+Make sure this works. We will use it in the future of this tutorial.
 You can of course just continuously copy and paste the snippets to the REPL by
 hand. However that is very tedious and time consuming.
 
-You want to use the REPL, because restating the JVM just to execute one file
-takes seconds, which makes for a very frustrating change, feedback cycle.
+You want to use the REPL, because restating the JVM, just to execute one file,
+takes seconds, which makes for a very frustrating feedback cycle.
 
 While you are at it you might also want to install 
 [rainbow_parentheses.vim](https://github.com/kien/rainbow_parentheses.vim).
-It will highlight matching parenthesis in the same color, while changing the
-color with each pair.
+It will highlight matching parenthesis in the same color, while giving each pair
+an individual color.
 
 ## Structuring Code 
 
-
 ### Files and Namespaces
 
-If you follows the tutorial and have created the *greenfeld_project* you will
+If you followed the tutorial and have created the *greenfeld_project* you will
 find a file called `src/greenfeld_project/core.clj`.
 This is the default starting point.
 
@@ -173,9 +172,9 @@ If you have your REPL going just put the code below the function definition
 itself and send it to the REPL for evaluation.
 You can remove the code afterwards.
 
-This way you can quickly setch together some code and move and refactor later.
+This way you can quickly sketch together some code and move and refactor later.
 
-If you use the REPL via command line you can switch to this (or any other valid
+If you use the REPL via command line you can switch to this namespae (or any other valid
 namespace) by calling:
 
 ```
@@ -184,8 +183,8 @@ namespace) by calling:
 
 ### Using Code from other Namespaces
 
-Obviously we don't just want to create namespaces we want to use stuff that is
-located in other namespaces. We can do so by useing `use` and / or `require`.
+We don't just want to create namespaces, we want to use stuff that is
+located in other namespaces. We can do so by useing `use` and `require`.
 
 
 #### use
@@ -195,23 +194,23 @@ to functions) into the current namespace.
 This will NOT pull vars the the used namespace itself includes via `use`.
 None the less: this polutes you namespace and it gets harder to avoid clashes
 and find where functions are defined.
-However if you want to use for example clojure core namespaces it sometimes
+However if you want to use clojure core namespaces - for example - it sometimes
 makes for nicer code.
 
-Here we include clojure set operations with the `use` function:
+Here we include `clojure.set` operations with the `use` function:
 
 ```clojure
 (use 'clojure.set)
 (intersection #{1 2 3} #{3 4 5})
 ```
 
-Notice that we need to quote the namespace.
+Notice that we need to quote the namespace, using a `'`.
 
 This is usefull when working in the REPL itself, but when you write files it's
 better to include this in the `ns` call directly.
 
 `ns` lets you specify lists that start with keywords, which it than handles.
-We can write the same use `ns`:
+We can write the same using `ns`:
 
 ```clojure
 (ns greenfield-clojure.util
@@ -227,8 +226,8 @@ we can change the code to:
   (:use [clojure.set :only [intersection]]))
 ```
 
-It's good pracice to use `ns` variant. The `use` function is really only for
-the REPL.
+It's good pracice to use the `ns` variant. The `use` function is mainly for
+the REPL usage.
 
 #### require
 
@@ -242,7 +241,7 @@ namespace:
 (require '(greenfield-clojure [util :as util]))
 ```
 
-Now this is very cumbersome and we already established that we prevere the `ns`
+Now this is very cumbersome and we already established that we prefere the `ns`
 version of things. So lets change it:
 
 ```clojure
@@ -250,7 +249,7 @@ version of things. So lets change it:
   (:require [greenfield-clojure.util :as util]))
 ```
 
-You can of course both use and require namespace at once:
+You can of course use both `use` and `require` at once:
 
 ```clojure
 (ns greenfield-clojure.core
@@ -268,18 +267,18 @@ And here is a version that uses and requires multiple namespaces:
             [clojure.string :as string]))
 ```
 
-With our utils library requires we can call it like this:
+With our utils library required, we can call its functions like this:
 
 ```clojure
 (util/greet "Xavier")
 ```
 
-In clojure the `/` to name vars from a different namespace.
+In clojure the `/` is used to reference vars from a different namespace.
 
 
 ## Executing from the Command Line
 
-Util now we only executed our code using a REPL. But at some point in time
+Util now we only executed our code using a REPL, but at some point in time
 we will want to start our program from the command line.
 
 There are two ways to do this:
@@ -331,7 +330,7 @@ lein run
 ### Creating an Uberjar
 
 We can use Leiningen to package everything up into one big jar that can be
-executes very simply.
+executed very simply.
 
 For that we have to set the main namespace (same thing we did above):
 
@@ -355,19 +354,18 @@ To do this add a `(:gen-class)` argument to the `ns` call:
   (:gen-class))
 ```
 
-This is also call AOT ( Ahead of Time Compilation).
+This is call AOT (Ahead of Time Compilation).
 It's sufficient to do this for the main namespace only.
 You should be carefull with this. In case implementations of core clojure
-functionallity changes your ATO compiles code might not be compatible without a
+functionallity change your ATO compiled code might not be compatible without a
 renewed compilation.
 
 
 A call to
-
 ```
 lein uberjar
 ```
-will create a standalone jar in `target`
+will create a standalone jar in the `target` folder.
 
 Run it via
 ```
