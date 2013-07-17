@@ -191,8 +191,8 @@ located in other namespaces. We can do so by useing `use` and `require`.
 
 `use` will include all the vars (function definitions are just vars that point
 to functions) into the current namespace.
-This will NOT pull vars the the used namespace itself includes via `use`.
-None the less: this polutes you namespace and it gets harder to avoid clashes
+This will NOT pull vars the used namespace itself includes via `use`.
+None the less: this pollutes you namespace and it gets harder to avoid clashes
 and find where functions are defined.
 However if you want to use clojure core namespaces - for example - it sometimes
 makes for nicer code.
@@ -206,7 +206,7 @@ Here we include `clojure.set` operations with the `use` function:
 
 Notice that we need to quote the namespace, using a `'`.
 
-This is usefull when working in the REPL itself, but when you write files it's
+This is useful when working in the REPL itself, but when you write files it's
 better to include this in the `ns` call directly.
 
 `ns` lets you specify lists that start with keywords, which it than handles.
@@ -226,12 +226,12 @@ we can change the code to:
   (:use [clojure.set :only [intersection]]))
 ```
 
-It's good pracice to use the `ns` variant. The `use` function is mainly for
+It's good practice to use the `ns` variant. The `use` function is mainly for
 the REPL usage.
 
 #### require
 
-We have seen that `use`, while nice in some cases, polutes our namespace.
+We have seen that `use`, while nice in some cases, pollutes our namespace.
 
 Instead we use `require`. Let us require our util namespace from the core
 namespace:
@@ -241,7 +241,7 @@ namespace:
 (require '(greenfield-clojure [util :as util]))
 ```
 
-Now this is very cumbersome and we already established that we prefere the `ns`
+Now this is very cumbersome and we already established that we prefer the `ns`
 version of things. So lets change it:
 
 ```clojure
@@ -305,7 +305,7 @@ Using leiningen we can call:
 lein run -m greenfield-clojure.core
 ```
 
-`-m` tells Leiningen wich namespace to use for execution.
+`-m` tells Leiningen which namespace to use for execution.
 The namespace must include a `-main` function.
 *Notice the `-` before the main*.
 
@@ -321,7 +321,7 @@ We can also specify the main namespace in our `project.clj`:
   :dependencies [[org.clojure/clojure "1.4.0"]])
 ```
 
-Now we can ommit the `-m ...` part:
+Now we can omit the `-m ...` part:
 
 ```
 lein run
@@ -356,8 +356,8 @@ To do this add a `(:gen-class)` argument to the `ns` call:
 
 This is call AOT (Ahead of Time Compilation).
 It's sufficient to do this for the main namespace only.
-You should be carefull with this. In case implementations of core clojure
-functionallity change your ATO compiled code might not be compatible without a
+You should be careful with this. In case implementations of core clojure
+functionality change your ATO compiled code might not be compatible without a
 renewed compilation.
 
 
@@ -372,7 +372,7 @@ Run it via
 java -jar target/greenfield-clojure-0.1.0-SNAPSHOT-standalone.jar
 ```
 
-## Summery
+## Summary
 
 
 We have done it!
@@ -381,13 +381,13 @@ In this tutorial we:
 
 1. setup and installed clojure from scratch
 1. fired up a REPL for interactive development
-1. configured our favorit editor (if it is Sublime or vim ;) )
-1. leared how the file structure matches up to namespaces
+1. configured our favorite editor (if it is Sublime or vim ;) )
+1. learned how the file structure matches up to namespaces
 1. how to create our own namespace
 1. how to include code from other namespaces
 1. we used leiningen to run our code from the command line
 1. bundled everything up in one nice care-free jar that can be pushed around the computing world
 
-I hope this tutorial was helpfull or interessting.
+I hope this tutorial was helpful or interesting.
 
 Any feedback is much appreciated.
