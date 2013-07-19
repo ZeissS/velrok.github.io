@@ -206,28 +206,10 @@ Here we include `clojure.set` operations with the `use` function:
 
 Notice that we need to quote the namespace, using a `'`.
 
+
 This is useful when working in the REPL itself, but when you write files it's
-better to include this in the `ns` call directly.
+better to include this in the `ns` call directly useing `require` instead.
 
-`ns` lets you specify lists that start with keywords, which it than handles.
-We can write the same using `ns`:
-
-```clojure
-(ns greenfield-clojure.util
-  (:use [clojure.set]))
-
-(intersection #{1 2 3} #{3 4 5})
-```
-If we only want to use the intersection function from the set namespace
-we can change the code to:
-
-```clojure
-(ns greenfield-clojure.util
-  (:use [clojure.set :only [intersection]]))
-```
-
-It's good practice to use the `ns` variant. The `use` function is mainly for
-the REPL usage.
 
 #### require
 
@@ -241,30 +223,12 @@ namespace:
 (require '(greenfield-clojure [util :as util]))
 ```
 
-Now this is very cumbersome and we already established that we prefer the `ns`
-version of things. So lets change it:
+Now this is very cumbersome. Instead we can include everything we want to
+require directly in the `ns` call:
 
 ```clojure
 (ns greenfield-clojure.core
   (:require [greenfield-clojure.util :as util]))
-```
-
-You can of course use both `use` and `require` at once:
-
-```clojure
-(ns greenfield-clojure.core
-  (:use [clojure.set])
-  (:require [greenfield-clojure.util :as util]))
-```
-
-And here is a version that uses and requires multiple namespaces:
-
-```clojure
-(ns greenfield-clojure.core
-  (:use [clojure.set]
-        [clojure.java.io :only [file]])
-  (:require [greenfield-clojure.util :as util]
-            [clojure.string :as string]))
 ```
 
 With our utils library required, we can call its functions like this:
@@ -274,6 +238,34 @@ With our utils library required, we can call its functions like this:
 ```
 
 In clojure the `/` is used to reference vars from a different namespace.
+
+**Update:**
+Thanks to Pierre Mariani for pointing out that if you want to include
+every var from another namespace into the current namespace like `use` would
+you can and should use the following variant of require:
+
+```clojure
+(ns greenfield-clojure.core
+  (:require [clojure.set :refer [intersection]]))
+
+(intersection #{1 2} #{2 3})
+; => #{2}
+```
+
+Or if you want to refer everything from the namespace replace 
+`[intersection]` with `:all`.
+
+```clojure
+(ns greenfield-clojure.core
+  (:require [clojure.set :refer :all]))
+```
+
+I admit the hole requiring other namespaces is confusing. But I can also
+promise you that all the other stuff is much more thought thou and has more
+of a theme to it.
+Now if you are interested or still confused 
+[Colin Jones explains requiring code](http://blog.8thlight.com/colin-jones/2010/12/05/clojure-libs-and-namespaces-require-use-import-and-ns.html)
+in more detail.
 
 
 ## Executing from the Command Line
