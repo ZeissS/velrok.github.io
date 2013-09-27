@@ -23,8 +23,7 @@ for thing in stuff:
 
 Python comes with this nice `for i in list` formulation, so taking care of a counter seperatly seamed wrong.
 
-----
-update
+## update
 
 
 Big thanks to [Rafa Rodríguez](https://plus.google.com/108719046880594833475/posts) for pointing me to `enumerate`
@@ -37,8 +36,9 @@ for i, thing in enumerate(stuff):
 
 ```
 
-You can skipp the rest :) .
+*You can skipp the rest :) .*
 
+<!-- more -->
 ----
 
 Indeed I came up with the following refactoring:
