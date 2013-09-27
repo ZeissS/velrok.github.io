@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Clojure Lesson Learned"
-date: 2013-07-04 18:45
+date: 2013-09-27 16:50
 comments: true
 categories: 
 ---
