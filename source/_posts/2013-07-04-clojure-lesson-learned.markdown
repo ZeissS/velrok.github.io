@@ -8,21 +8,20 @@ categories:
 
 ## background
 
-I started programming Clojure about 3 month ago. So I am fairly new to the
+I started programming Clojure about 5 month ago. So I am fairly new to the
 language. I'm using Clojure to write my master thesis, which is a recommendation
 engine for advertisement.
 When you start to build a recommendation engine stuff like 
 [Mahout](http://mahout.apache.org/) can be a big help.
-However who want to write java, if one can avoid it, right? ;)
-So I looked in jython and jruby, which enable you to write python and ruby
-respectively that runs on the JVM.
+But it's java :(, which is very unproductive to write.
+So I looked into jython and jruby, which enable you to write python and ruby
+respectively, that runs on the JVM.
 Sadly neither did the trick. Jython is missing a simple way to bundle
 everything up in one uber.jar while jruby had some issues finding the correct
 constructor for one of the mahout classes :(.
 So I seized that opportunity to learn Clojure, and I regret not a second of it.
 
-I'm now using Clojure and [Leiningen](https://github.com/technomancy/leiningen)
-to program the project of my thesis.
+I'm now using Clojure and [Leiningen](https://github.com/technomancy/leiningen).
 I chose [Parallel Colt](http://incanter.org/docs/parallelcolt/api/)
 as my matrix library, where I use wrapper functions to provide a nicer
 Clojure interface.
@@ -31,12 +30,15 @@ I use [incanter](http://incanter.org/) for basic data analysis and
 visualisation.
 
 
+<!-- more -->
+
 ## likes
 
 The best thing about Clojure are its persistent and immutable data structures.
-Immutable describes that fact that one can not change a basic data structure.
+Immutable meand that one can not change a basic data structure in place.
 If you need to add a thing to a vector you simple call a function
-that returns a new vector. This is where the persistent part kicks in.
+that returns a new vector. 
+This is where the persistent part kicks in.
 Persistent means that you are guaranteed the same big O properties.
 Which is to say adding a element to a vector will always take O(1) time no
 matter the size of the vector.
@@ -72,18 +74,13 @@ language. So there are some things missing:
 - I'm still looking for a good debugger. As far as I know [ritz](https://github.com/pallet/ritz)
 is the best thing you can get right now. However it's not trivial to set up 
 if you are not using emacs :(.
-- Sometimes error messages just end in some code of a anonymous function with
-no hint on where that might be in your code. I got a lot of this while using
-[partial](http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/partial).
-However I have not investigated this in detail so I could be off.
-Nonetheless you might get such nirvana pointing stack traces :( .
 
-- Running on the JVM come with a startup time cost xD.
+- Running on the JVM comes with a startup time :( .
 - REPL and [tools.namespace](https://github.com/clojure/tools.namespace) to 
 the rescue. Stuart Sierra has an [article about his workflow](https://github.com/clojure/tools.namespace)
 which only reloads code from files that have changed and those depending on them.
-I haven't applied that to my workflow now, because I hadn't had the need
-now. My REPL startup time is about 2 sec. so its OK considering I only have to
+I haven't applied that to my workflow now, because I hadn't had the need. 
+My REPL startup time is about 2 sec. so its OK considering I only have to
 restart it about 1-3 times a day.
 
 
@@ -92,15 +89,15 @@ restart it about 1-3 times a day.
 One of my main motivations to try clojure was to utilize its 
 [STM: Software Transactional Memory](http://en.wikipedia.org/wiki/Transactional_memory)
 which enables you to use agents and atoms and a lot of concurrent goodness.
-So I assumed having to thing in concurrent terms would be the big thing.
+So I assumed having to think in concurrent terms would be the big obsticle.
 
 ### Immutable data structures rock!
 
 It turns out that the biggest brain wracker during the first 2 weeks where
 immutable data structures!
-This things make you thing the other way around. You end up writing 
+This things force you to think the other way around. You end up writing 
 recepies on how to create a new thing by applying a function to each element of
-a input thing.
+a input instead of writting recepies on how to change something in place.
 
 Lets assum we want to implement the [game of live](http://en.wikipedia.org/wiki/Conway's_Game_of_Life).
 
@@ -139,8 +136,9 @@ sequence that is implicitly build and returned.
 At no point in time can we change the input world nor do we change a already
 created object.
 
-You can of course white functional code in python using map. However at no point
-does pyhton ensure that you do not change the datastructure in place.
+You can of course write functional code in python using map. However 
+pyhton doesn't ensure that you do not change the datastructure in place by 
+accident.
 
 
 ### use require instead of use
@@ -167,9 +165,10 @@ Where `require` lets you alias packages:
 
 ### inject state into functions
 
-One thing that stuck right in my head from the beginning was everything a 
-function operates on should be past in as an argument instead of having some
-var. Stuard Sierra gave a talk titled 
+One thing that stuck right in my head from the beginning was that everything a 
+function operates on should be past in as an argument instead of
+using a gloabel var.
+Stuard Sierra gave a talk titled 
 [Clojure in the Large](http://www.infoq.com/presentations/Clojure-Large-scale-patterns-techniques)
 that points out why this is the right way to do things and gives tips and 
 examples on how to achive this goal in the large.
@@ -217,33 +216,33 @@ store and name intermediat results.
 
 This is and remains true. You shall test first and implement later!
 
-Beeing new to the language a REPL help me a lot to experiment with code
-snippets quickly, by seeing the output of different calls.
-Especially when you are not sure how the output of a function looks exactly
+Beeing new to the language the REPL helped me a lot.
+I used it to experiment with code snippets quickly. 
+Especially when you are not sure how the output of a function looks exactly,
 it's nice to play around with it a little in the REPL.
 
-However I missing going back and fixiate this in test cases.
-I was got lazy and thought maybe you can cut this corner. Gues what it came back
-to bite me only 2 weeks in. Write tests!
+However I missed going back and fixiate this in test cases.
+I got lazy and tried to cut corners by skipping the tests.
+Gues what it came back to bite me only 2 weeks later. Write tests!
 
 The default Test framework for Clojure seams to be 
 [midje](https://github.com/marick/Midje).
 However I liked my classical TDD/BDD DSL so I used [speclj](http://speclj.com/).
 Running `lein spec -a` on the command line will autotest all the functions and
-rerun test of files that change.
-It does keep a JVM running so its fast in executing the test.
-Should you however remove definitions you need to restart the call, because
-it will keep the old definition around. So if you still have code that depends
-on the allegedly removed function your test will not fail until you restart the
-JVM.
+rerun tests of files that were changed.
+It does keep a JVM running so it's fast.
+However, every time you remove definitions you need to restart the call, because
+it will keep the old definition around. 
+So if you still have code that depends on the allegedly removed function your 
+test will not fail until you restart the JVM.
 
 
 ### Making things run on multiple cores is easy.
 
 If you use `map` a lot making things run on multiple cores is easy:
-just replace `map` with a `pmap`. This will execute the function using
+just replace `map` with a `pmap`. This will execute the function in parallel using
 multiple cores.
-While this is a valid and easy step it only is beneficial if the function
+While this is a valid and easy step, it is only beneficial if the function
 takes some time to run. Otherwise the overhead of `pmap` will midigate the effect
 and you end up beeing slower.
 So start at the out calls and see how far you can get.
@@ -260,20 +259,38 @@ Drew Olson has a nice
 [article comparing clojure core.async with go](http://blog.drewolson.org/blog/2013/07/04/clojure-core-dot-async-and-go-a-code-comparison/).
 
 
-
-
-- [pre and post assertions](http://blog.fogus.me/2009/12/21/clojures-pre-and-post/) are a blessing and so easy to use
-- you need only a hand full of vars. In many cases none at all. [Ask Stuart](http://www.infoq.com/presentations/Concurrency-Clojure) ;) 
-- they introduce global state, so use with utmost caution
-- I can't remember the syntax for optional parameters!
-- [print.foo](https://github.com/AlexBaranosky/print-foo) is nice if you have small data
-
-
 ## vim and clojure
 
-- vim fireplace REPL more stable that sublime REPL
-- Sublime Repl nicer (because it shows the last call)
-- vim fireplace hace invaluable :Doc and :Souce commands!
-- no ctags support for clojure but lisp works fine
-- rainbow parentecies
-- `y%`and `d%` are big time and brain power savers
+I started to code Clojure using Sublime.
+While it has a nice REPL, which shows the last command send to it, it turned out
+to be quiet unstable :( .
+So I switched to vim using [vim-fireplace](https://github.com/tpope/vim-fireplace),
+which REPL integration is more stable.
+It also comes with invaluable :Doc and :Source commands which deliver the 
+documentation of the source of a function, respectively.
+Sadly ctags has no support for Clojure, but you can use the lisp version for now.
+You don't want to miss out on [rainbow parentheses](https://github.com/kien/rainbow_parentheses.vim) 
+;).
+The vim commands `y%`and `d%` are big time and brain power savers, because they
+let you copy or delete a complete s-expression.
+
+
+## conclusion
+
+There are many things I like about Clojure so far.
+It has great java integration and dependency management, it's dynamic and fast.
+Learning it is not easy, if you come from a traditional OO background but it is 
+worth your time, because you will become a better developer.
+Obviously I didn't spent enough time with it to feel the pain every tool brings
+with it if you use it intensively.
+The development setup is decent while not perfect jet, but it is still quiet a 
+young language.
+
+I can recommend you give it a spin :) .
+
+If you live in the cologne area you can find me at the 
+[Cologne Clojure User Group](http://www.meetup.com/clojure-cologne/),
+or just leave me a comment :) .
+
+Thanks for reading all my ramblings ;).
+I hope it was worth your time.
