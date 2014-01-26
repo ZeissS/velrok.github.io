@@ -6,6 +6,8 @@ comments: true
 categories: London moving real_live
 ---
 
+![money](/images/money.jpg)
+
 I moved to London two days ago to start my new job here.
 So this is an attempt to collect information and sources that I found useful.
 This article is specifically about Money and basic Banking stuff.
