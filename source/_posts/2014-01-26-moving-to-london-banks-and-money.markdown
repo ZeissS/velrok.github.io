@@ -15,8 +15,9 @@ This article is specifically about Money and basic Banking stuff.
 
 When you are working in the UK chances are that your employer requires a UK
 bank account that holds your money in Pounds.
-An account that use use to collect your income and to pay the bills is called
-"Current Account". I used [money super market](http://www.moneysupermarket.com/current-accounts/search/results/?goal=CUR_INTEREST)
+"Current Account" is the technical term for an account that is designed to
+collect your income and pay your bills.
+I used [money super market](http://www.moneysupermarket.com/current-accounts/search/results/?goal=CUR_INTEREST)
 to find an account suitable to my needs.
 They have good how-tos that cover the basics without being lengthy.
 
@@ -24,10 +25,10 @@ They have good how-tos that cover the basics without being lengthy.
 ## Moving money between the UK and your homeland
 
 The Current Account might be your primary account for any money business inside
-the UK but if you want to transfer money to a different country it will get very
-costly, because they might charge you as much as 30£ for each transfer.
+the UK but if you want to transfer money to a different country it will probably 
+get very expensive, because they might charge you as much as 30£ for each transfer.
 They might also give you a slightly worse conversion rate, compared to what 
-could be possible.
+is possible.
 
 However there are money transfer institutions that specialize in moving money
 to different currencies.
@@ -43,8 +44,8 @@ to my private pension found).
 ## Feedback
 
 As I said I'm reporting to be best of my knowledge, which isn't much.
-So if I got something wrong or if you have any remarks please let me and the
-internet know in the comments.
+If I got something wrong or if you have any remarks please let me
+know, in the comments.
 If this article help you I'm also happy for any shout out or comment.
 
 Let me know what you think!
@@ -52,7 +53,8 @@ Let me know what you think!
 
 ## Disclaimer
 
-Everything written is my personal experience I'm not a professional for this topics.
+Everything written is my personal experience. 
+I'm not an expert on this topics.
 
 For now all of this is strictly theoretical. As of this writing I have not
 signed any contract, because it is a Sunday and all institutions are closed.
