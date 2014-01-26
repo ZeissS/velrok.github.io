@@ -10,6 +10,7 @@ I moved to London two days ago to start my new job here.
 So this is an attempt to collect information and sources that I found useful.
 This article is specifically about Money and basic Banking stuff.
 
+<!-- more -->
 
 ## Choosing a bank account for your income
 
