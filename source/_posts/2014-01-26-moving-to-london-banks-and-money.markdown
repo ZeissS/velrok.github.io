@@ -24,6 +24,22 @@ I used [money super market](http://www.moneysupermarket.com/current-accounts/sea
 to find an account suitable to my needs.
 They have good how-tos that cover the basics without being lengthy.
 
+You want to start this early, about 2-3 weeks before you move to the UK.
+This way your account is already set up and you can wire money into it, which
+can take days.
+I missed that and had to hustle with different account debit card limits and 
+long money transaction times.
+As soon as you arrive you want to make an appointment to be authenticated. 
+This will require you to turn up in person at a branch of the bank with your 
+passport.
+Only after you have been authenticated can you withdraw money from your new
+account.
+
+You might get only a standard migrant account, since you will not have a local
+address yet.
+The account you have chosen online will only be available once you can provide
+a credit score and a local address.
+
 
 ## Moving money between the UK and your homeland
 
@@ -42,6 +58,16 @@ frequently, do you have to transfer large amounts and so forth.
 [money.co.uk](http://www.money.co.uk/money-transfers/money-transfer-to-germany.htm)
 helped me to find a good fit for my needs (many low amount transactions
 to my private pension found).
+
+
+### bitcoin as an alternative?
+
+If you only want to make a few transactions, and want to circumvent the cross
+country fees, you could try to use a crypto currency like 
+[Bitcoin](http://www.coindesk.com/information/what-is-bitcoin/) as an 
+intermediary currency.
+I found [CoinDesk](http://www.coindesk.com/) to be comprehensible.
+However at this point this is just an idea I might try in the next days / weeks.
 
 
 ## Feedback
