@@ -29,13 +29,14 @@ This way your account is already set up and you can wire money into it, which
 can take days.
 I missed that and had to hustle with different account debit card limits and 
 long money transaction times.
-As soon as you arrive you want to make an appointment to be authenticated, this
-will require you to turn up in person at a branch of the bank with your passport.
+As soon as you arrive you want to make an appointment to be authenticated. 
+This will require you to turn up in person at a branch of the bank with your 
+passport.
 Only after you have been authenticated can you withdraw money from your new
 account.
 
 You might get only a standard migrant account, since you will not have a local
-address jet.
+address yet.
 The account you have chosen online will only be available once you can provide
 a credit score and a local address.
 
@@ -61,8 +62,9 @@ to my private pension found).
 
 ### bitcoin as an alternative?
 
-If you only want to make a few transactions and want to circumvent the cross
-country fees you could try to use a crypto currency like BitCoin as an 
+If you only want to make a few transactions, and want to circumvent the cross
+country fees, you could try to use a crypto currency like 
+[Bitcoin](http://www.coindesk.com/information/what-is-bitcoin/) as an 
 intermediary currency.
 I found [CoinDesk](http://www.coindesk.com/) to be comprehensible.
 However at this point this is just an idea I might try in the next days / weeks.
