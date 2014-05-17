@@ -1,0 +1,625 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Clojure Lesson Learned - Mein(un)sinn</title>
+  <meta name="author" content="velrok">
+
+  
+  <meta name="description" content="background I started programming Clojure about 5 month ago. So I am fairly new to the
+language. I&#8217;m using Clojure to write my master thesis, &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://Velrok.github.io/blog/2013/09/27/clojure-lesson-learned">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Mein(un)sinn" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Fjalla+One' rel='stylesheet' type='text/css'>
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-42444085-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   class="collapse-sidebar sidebar-footer" >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Mein(un)sinn</a></h1>
+  
+    <h2> </h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss email">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+    <li><a href="" rel="subscribe-email" title="subscribe via email">Email</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:Velrok.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+
+  <a href="https://github.com/velrok"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub"></a>
+
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Clojure Lesson Learned</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-09-27T16:50:00+01:00" pubdate data-updated="true">Sep 27<span>th</span>, 2013</time>
+        
+         | <a href="#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><h2>background</h2>
+
+<p>I started programming Clojure about 5 month ago. So I am fairly new to the
+language. I&#8217;m using Clojure to write my master thesis, which is a recommendation
+engine for advertisement.
+When you start to build a recommendation engine stuff like
+<a href="http://mahout.apache.org/">Mahout</a> can be a big help.
+But it&#8217;s java :(, which is very unproductive to write.
+So I looked into jython and jruby, which enable you to write python and ruby
+respectively, that runs on the JVM.
+Sadly neither did the trick. Jython is missing a simple way to bundle
+everything up in one uber.jar while jruby had some issues finding the correct
+constructor for one of the mahout classes :(.
+So I seized that opportunity to learn Clojure, and I regret not a second of it.</p>
+
+<p>I&#8217;m now using Clojure and <a href="https://github.com/technomancy/leiningen">Leiningen</a>.
+I chose <a href="http://incanter.org/docs/parallelcolt/api/">Parallel Colt</a>
+as my matrix library, where I use wrapper functions to provide a nicer
+Clojure interface.</p>
+
+<p>I use <a href="http://incanter.org/">incanter</a> for basic data analysis and
+visualisation.</p>
+
+<!-- more -->
+
+
+<h2>likes</h2>
+
+<p>The best thing about Clojure are its persistent and immutable data structures.
+Immutable meand that one can not change a basic data structure in place.
+If you need to add a thing to a vector you simple call a function
+that returns a new vector.
+This is where the persistent part kicks in.
+Persistent means that you are guaranteed the same big O properties.
+Which is to say adding a element to a vector will always take O(1) time no
+matter the size of the vector.
+This is also true for all basic Clojure data structures:</p>
+
+<ul>
+<li>lists</li>
+<li>vectors</li>
+<li>maps</li>
+<li>sets</li>
+</ul>
+
+
+<p>Here is a very good video with Rich Hickey, the father of Clojure, and
+Brian Beckman, where they talk about the inner workings of Clojure.</p>
+
+<p>I can highly recommend this!</p>
+
+<iframe width="420" height="315" src="//www.youtube.com/embed/wASCH_gPnDw" frameborder="0" allowfullscreen></iframe>
+
+
+<p>Clojure is the first lisp that I am using and I fell in love with
+<a href="http://en.wikipedia.org/wiki/S-expression">s-expressions</a>.
+They allow for highly flexible code and with the combination of macros
+enable anyone to extend the language itself!
+Also there are no syntax exceptions or reserved keywords to remember, because
+everything is a list and the first argument is interpreted to be a function.
+Done. Everything else is based on that rules.</p>
+
+<h2>dislike</h2>
+
+<p>Now its not all fun and games. Clojure, however powerful, is still a young
+language. So there are some things missing:</p>
+
+<ul>
+<li><p>I&#8217;m still looking for a good debugger. As far as I know <a href="https://github.com/pallet/ritz">ritz</a>
+is the best thing you can get right now. However it&#8217;s not trivial to set up
+if you are not using emacs :(.</p></li>
+<li><p>Running on the JVM comes with a startup time :( .</p></li>
+<li>REPL and <a href="https://github.com/clojure/tools.namespace">tools.namespace</a> to
+the rescue. Stuart Sierra has an <a href="https://github.com/clojure/tools.namespace">article about his workflow</a>
+which only reloads code from files that have changed and those depending on them.
+I haven&#8217;t applied that to my workflow now, because I hadn&#8217;t had the need.
+My REPL startup time is about 2 sec. so its OK considering I only have to
+restart it about 1-3 times a day.</li>
+</ul>
+
+
+<h2>lessons learned</h2>
+
+<p>One of my main motivations to try clojure was to utilize its
+<a href="http://en.wikipedia.org/wiki/Transactional_memory">STM: Software Transactional Memory</a>
+which enables you to use agents and atoms and a lot of concurrent goodness.
+So I assumed having to think in concurrent terms would be the big obsticle.</p>
+
+<h3>Immutable data structures rock!</h3>
+
+<p>It turns out that the biggest brain wracker during the first 2 weeks where
+immutable data structures!
+This things force you to think the other way around. You end up writing
+recepies on how to create a new thing by applying a function to each element of
+a input instead of writting recepies on how to change something in place.</p>
+
+<p>Lets assum we want to implement the <a href="http://en.wikipedia.org/wiki/Conway's_Game_of_Life">game of live</a>.</p>
+
+<p>In python a update function could look something like this:</p>
+
+<figure class='code'><figcaption><span>a posible update world function in python </span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="n">world</span><span class="p">):</span>
+</span><span class='line'>  <span class="n">new_world</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span class='line'>  <span class="k">for</span> <span class="n">y</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">world</span><span class="p">):</span>
+</span><span class='line'>    <span class="n">new_row</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span class='line'>    <span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">cell</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">row</span><span class="p">):</span>
+</span><span class='line'>      <span class="n">new_row</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">next_cell_state</span><span class="p">(</span><span class="n">world</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">))</span>
+</span><span class='line'>    <span class="n">new_world</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">new_row</span><span class="p">)</span>
+</span><span class='line'>  <span class="k">return</span> <span class="n">new_world</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This function creates a new world and adds stuff to it while it iterates the
+input world.
+This is typical state manipulating code.</p>
+
+<p>With immutable data structures and functional programming one has to think
+differently:</p>
+
+<figure class='code'><figcaption><span>a posible update world function in clojure </span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='clojure'><span class='line'><span class="p">(</span><span class="kd">defn </span><span class="nv">update</span> <span class="p">[</span><span class="nv">world</span><span class="p">]</span>
+</span><span class='line'>  <span class="p">(</span><span class="nf">map-indext</span> <span class="p">(</span><span class="k">fn </span><span class="p">[</span><span class="nv">y</span> <span class="nv">row</span><span class="p">]</span>
+</span><span class='line'>                <span class="p">(</span><span class="nf">map-indext</span> <span class="p">(</span><span class="k">fn </span><span class="p">[</span><span class="nv">x</span> <span class="nv">cell</span><span class="p">]</span>
+</span><span class='line'>                              <span class="p">(</span><span class="nf">next-cell-state</span> <span class="nv">world</span> <span class="nv">y</span> <span class="nv">x</span><span class="p">))</span>
+</span><span class='line'>                            <span class="nv">row</span><span class="p">))</span>
+</span><span class='line'>              <span class="nv">world</span><span class="p">))</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>In the Clojure version we use map to apply a function to each row and then
+another map to apply another function to each cell. Each map call returns a
+sequence that is implicitly build and returned.
+At no point in time can we change the input world nor do we change a already
+created object.</p>
+
+<p>You can of course write functional code in python using map. However
+pyhton doesn&#8217;t ensure that you do not change the datastructure in place by
+accident.</p>
+
+<h3>use require instead of use</h3>
+
+<p>Namespaces and including and referencing code from other packages was vey
+confusing to me, because to do so you can use <code>(use)</code> <code>(require)</code> and <code>(import)</code>.</p>
+
+<p>When applying <code>use</code> all the functions are imported into the current namespace:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='clojure'><span class='line'><span class="p">(</span><span class="kd">ns </span><span class="nv">my.core</span>
+</span><span class='line'>  <span class="p">(</span><span class="ss">:use</span> <span class="p">[</span><span class="nv">my-lib.core</span><span class="p">]))</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">(</span><span class="nf">hello</span> <span class="s">&quot;world&quot;</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Where <code>require</code> lets you alias packages:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='clojure'><span class='line'><span class="p">(</span><span class="kd">ns </span><span class="nv">my.core</span>
+</span><span class='line'>  <span class="p">(</span><span class="ss">:require</span> <span class="p">[</span><span class="nv">my-lib.core</span> <span class="ss">:as</span> <span class="nv">core</span><span class="p">]))</span>
+</span><span class='line'><span class="p">(</span><span class="nf">core/hello</span> <span class="s">&quot;world&quot;</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>inject state into functions</h3>
+
+<p>One thing that stuck right in my head from the beginning was that everything a
+function operates on should be past in as an argument instead of
+using a gloabel var.
+Stuard Sierra gave a talk titled
+<a href="http://www.infoq.com/presentations/Clojure-Large-scale-patterns-techniques">Clojure in the Large</a>
+that points out why this is the right way to do things and gives tips and
+examples on how to achive this goal in the large.</p>
+
+<h3>Don&#8217;t overuse ->> and -></h3>
+
+<p>It took me a while to understand the
+<a href="http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/->&#8221;>-></a>
+and
+<a href="http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/->>&#8221;>->></a>
+operations.
+You can use thouse to build a pipeline. Which is a beautyfull construct in
+many situations.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+</pre></td><td class='code'><pre><code class='clojure'><span class='line'><span class="c1">; using plain clojure calls:</span>
+</span><span class='line'><span class="c1">; one has to start at the last call, making this difficult to follow</span>
+</span><span class='line'><span class="p">(</span><span class="nb">filter </span><span class="o">#</span><span class="p">(</span><span class="nb">= </span><span class="mi">0</span> <span class="p">(</span><span class="nb">rem </span><span class="nv">%</span> <span class="mi">4</span><span class="p">))</span> <span class="c1">; only include the ones that are multiple of 4</span>
+</span><span class='line'>        <span class="p">(</span><span class="nb">map </span><span class="o">#</span><span class="p">(</span><span class="nb">+ </span><span class="mi">1</span> <span class="nv">%</span><span class="p">)</span> <span class="c1">; add one to each</span>
+</span><span class='line'>             <span class="p">(</span><span class="nb">map </span><span class="o">#</span><span class="p">(</span><span class="nb">* </span><span class="mi">3</span> <span class="nv">%</span><span class="p">)</span> <span class="c1">; multiply each by 3</span>
+</span><span class='line'>                  <span class="p">(</span><span class="nb">filter </span><span class="nv">odd?</span> <span class="c1">; only include the odd ones</span>
+</span><span class='line'>                          <span class="p">(</span><span class="nb">range </span><span class="mi">20</span><span class="p">)))))</span> <span class="c1">; numbers from 0 to 19</span>
+</span><span class='line'><span class="c1">; =&gt; (4 16 28 40 52)</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">; using the -&gt;&gt; pipe, where the result of the last call</span>
+</span><span class='line'><span class="c1">; is used as the last argument in the next function</span>
+</span><span class='line'><span class="p">(</span><span class="nf">-&gt;&gt;</span> <span class="p">(</span><span class="nb">range </span><span class="mi">20</span><span class="p">)</span>
+</span><span class='line'>     <span class="p">(</span><span class="nb">filter </span><span class="nv">odd?</span><span class="p">)</span>
+</span><span class='line'>     <span class="p">(</span><span class="nb">map </span><span class="o">#</span><span class="p">(</span><span class="nb">* </span><span class="mi">3</span> <span class="nv">%</span><span class="p">))</span>
+</span><span class='line'>     <span class="p">(</span><span class="nb">map </span><span class="o">#</span><span class="p">(</span><span class="nb">+ </span><span class="mi">1</span> <span class="nv">%</span><span class="p">))</span>
+</span><span class='line'>     <span class="p">(</span><span class="nb">filter </span><span class="o">#</span><span class="p">(</span><span class="nb">= </span><span class="mi">0</span> <span class="p">(</span><span class="nb">rem </span><span class="nv">%</span> <span class="mi">4</span><span class="p">))))</span>
+</span><span class='line'><span class="c1">; =&gt; (4 16 28 40 52)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>However when you find yourself writing huge anonymous functions
+that draw from previus defined variables for example in a
+<a href="http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/let">let</a>
+it is probably time to reconsider your code :) and use plain let to
+store and name intermediat results.</p>
+
+<h3>Test first!</h3>
+
+<p>This is and remains true. You shall test first and implement later!</p>
+
+<p>Beeing new to the language the REPL helped me a lot.
+I used it to experiment with code snippets quickly.
+Especially when you are not sure how the output of a function looks exactly,
+it&#8217;s nice to play around with it a little in the REPL.</p>
+
+<p>However I missed going back and fixiate this in test cases.
+I got lazy and tried to cut corners by skipping the tests.
+Gues what it came back to bite me only 2 weeks later. Write tests!</p>
+
+<p>The default Test framework for Clojure seams to be
+<a href="https://github.com/marick/Midje">midje</a>.
+However I liked my classical TDD/BDD DSL so I used <a href="http://speclj.com/">speclj</a>.
+Running <code>lein spec -a</code> on the command line will autotest all the functions and
+rerun tests of files that were changed.
+It does keep a JVM running so it&#8217;s fast.
+However, every time you remove definitions you need to restart the call, because
+it will keep the old definition around.
+So if you still have code that depends on the allegedly removed function your
+test will not fail until you restart the JVM.</p>
+
+<h3>Making things run on multiple cores is easy.</h3>
+
+<p>If you use <code>map</code> a lot making things run on multiple cores is easy:
+just replace <code>map</code> with a <code>pmap</code>. This will execute the function in parallel using
+multiple cores.
+While this is a valid and easy step, it is only beneficial if the function
+takes some time to run. Otherwise the overhead of <code>pmap</code> will midigate the effect
+and you end up beeing slower.
+So start at the out calls and see how far you can get.</p>
+
+<p>If you need better prallel performance Clojure gives you the new
+<a href="http://clojure.com/blog/2012/05/08/reducers-a-library-and-model-for-collection-processing.html">reducers</a>.
+They sacrifice lazyness to give you a fork join abstraction that uses map
+reduce semantics.
+I did read the article, but did not have the time to experiment a lot with it.</p>
+
+<p>Also <a href="https://github.com/clojure/core.async">core.async</a>
+gives you Go like lightweight threads and channel semantics.
+Drew Olson has a nice
+<a href="http://blog.drewolson.org/blog/2013/07/04/clojure-core-dot-async-and-go-a-code-comparison/">article comparing clojure core.async with go</a>.</p>
+
+<h2>vim and clojure</h2>
+
+<p>I started to code Clojure using Sublime.
+While it has a nice REPL, which shows the last command send to it, it turned out
+to be quiet unstable :( .
+So I switched to vim using <a href="https://github.com/tpope/vim-fireplace">vim-fireplace</a>,
+which REPL integration is more stable.
+It also comes with invaluable :Doc and :Source commands which deliver the
+documentation of the source of a function, respectively.
+Sadly ctags has no support for Clojure, but you can use the lisp version for now.
+You don&#8217;t want to miss out on <a href="https://github.com/kien/rainbow_parentheses.vim">rainbow parentheses</a>
+;).
+The vim commands <code>y%</code>and <code>d%</code> are big time and brain power savers, because they
+let you copy or delete a complete s-expression.</p>
+
+<h2>conclusion</h2>
+
+<p>There are many things I like about Clojure so far.
+It has great java integration and dependency management, it&#8217;s dynamic and fast.
+Learning it is not easy, if you come from a traditional OO background but it is
+worth your time, because you will become a better developer.
+Obviously I didn&#8217;t spent enough time with it to feel the pain every tool brings
+with it if you use it intensively.
+The development setup is decent while not perfect jet, but it is still quiet a
+young language.</p>
+
+<p>I can recommend you give it a spin :) .</p>
+
+<p>If you live in the cologne area you can find me at the
+<a href="http://www.meetup.com/clojure-cologne/">Cologne Clojure User Group</a>,
+or just leave me a comment :) .</p>
+
+<p>Thanks for reading all my ramblings ;).
+I hope it was worth your time.</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">velrok</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-09-27T16:50:00+01:00" pubdate data-updated="true">Sep 27<span>th</span>, 2013</time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://Velrok.github.io/blog/2013/09/27/clojure-lesson-learned/" data-via="velrok" data-counturl="http://Velrok.github.io/blog/2013/09/27/clojure-lesson-learned/" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2013/07/17/clojure-ggetting-started/" title="Previous Post: Clojure Getting Started: Setting Up">&laquo; Clojure Getting Started: Setting Up</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2014/01/26/moving-to-london-banks-and-money/" title="Next Post: Moving to London: Banks and Money">Moving to London: Banks and Money &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/05/17/developers-love-bacon-conference/">Developers Love Bacon - Conference</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/01/26/moving-to-london-banks-and-money/">Moving to London: Banks and Money</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/09/27/clojure-lesson-learned/">Clojure Lesson Learned</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/07/17/clojure-ggetting-started/">Clojure Getting Started: Setting Up</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/04/29/moving-the-counter-into-the-foreach-loop/">moving the counter into the foreach loop</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/velrok">@velrok</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'velrok',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+
+<section class="googleplus googleplus-hidden">
+  <h1>
+    <a href="https://plus.google.com/115269108641501123493?rel=author">
+      <img src="http://www.google.com/images/icons/ui/gprofile_button-32.png" width="32" height="32">
+      Google+
+    </a>
+  </h1>
+</section>
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - velrok -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'meinsinn';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://Velrok.github.io/blog/2013/09/27/clojure-lesson-learned/';
+        var disqus_url = 'http://Velrok.github.io/blog/2013/09/27/clojure-lesson-learned/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

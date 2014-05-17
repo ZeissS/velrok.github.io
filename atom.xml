@@ -1,0 +1,1155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Mein(un)sinn]]></title>
+  <link href="http://Velrok.github.io/atom.xml" rel="self"/>
+  <link href="http://Velrok.github.io/"/>
+  <updated>2014-05-17T16:25:36+01:00</updated>
+  <id>http://Velrok.github.io/</id>
+  <author>
+    <name><![CDATA[velrok]]></name>
+    <email><![CDATA[]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Developers Love Bacon - Conference]]></title>
+    <link href="http://Velrok.github.io/blog/2014/05/17/developers-love-bacon-conference/"/>
+    <updated>2014-05-17T14:45:00+01:00</updated>
+    <id>http://Velrok.github.io/blog/2014/05/17/developers-love-bacon-conference</id>
+    <content type="html"><![CDATA[<p><img src="http://Velrok.github.io/images/bacon_2014.png" alt="bacon" /></p>
+
+<blockquote><p>BACON is a two-day conference on all the things developers love.</p></blockquote>
+
+<p>And that is exactly what it is. A friendly get together of people that like to code
+and other things they are interested in.
+All talks are limited to 30 min and come in a huge variety.
+Thus the talks are more about general inspiration than about hard facts.</p>
+
+<!-- more -->
+
+
+<p>Due to the fact, that the conference runs two
+tracks in parallel I could only attend about half of the talks.</p>
+
+<h2>My Highlights</h2>
+
+<p><a href="http://devslovebacon.com/conferences/bacon-2014/talks/from-colo-to-yolo-confessions-of-the-angriest-archivist">FROM COLO TO YOLO: CONFESSIONS OF THE ANGRIEST ARCHIVIST</a></p>
+
+<p><a href="http://ascii.textfiles.com/">Jason Scott</a>,
+was probably the most entertaining and passionate speaker at the conf.
+What starts out a bit wired and arty progresses into a talk that conveys his passion
+for saving the cultural data that is hosted and bound inside all the new shiny
+online services (instagram for cats anyone?).
+Specially in cases where all the data is about to permanently to disappear, with
+30 days notice.</p>
+
+<p><a href="http://devslovebacon.com/conferences/bacon-2014/talks/coding-and-the-mozart-effect">CODING AND THE MOZART EFFECT</a></p>
+
+<p>Everyone likes music. So does <a href="@aspleenic">PJ Hagerty</a>.
+Given the right mix you can increase your concentration and get cleverer, at least for a couple of
+minutes / hours.
+Watch PJs talk for more information and a great presentation of what is possible
+with music and how you can get new listening material that is both new and
+interesting.</p>
+
+<p><a href="http://devslovebacon.com/conferences/bacon-2014/talks/living-with-ocd">LIVING WITH OCD</a></p>
+
+<p><a href="https://sethvargo.com">Seth Vargo</a> has a condition. While his OCD can drive him crazy during a normal day
+out and about, he found that it also comes in handy in his job as a Dev and also
+makes him ridiculously efficient when it comes to shopping.
+This talk gives a delightful view into a very orderly mind and makes a point
+that you can live your life with OCD.</p>
+
+<p><a href="http://devslovebacon.com/conferences/bacon-2014/talks/there-is-no-such-thing-as-work-life-balance-working-with-burnout">THERE IS NO SUCH THING AS WORK-LIFE BALANCE (WORKING WITH BURNOUT)</a></p>
+
+<p><a href="http://adamonishi.com">Adam Onishi</a> talks about having Burnout.
+I learned that it is not something that happens to you, but a tendency of overworking yourself,
+which will happen again if you are not careful.
+Apparently a strong intrinsic motivation, which lets you accomplish great things,
+is also the reason why you overwork yourself.
+A very personal talk.</p>
+
+<p><a href="http://devslovebacon.com/conferences/bacon-2014/talks/whisk-e-y-the-best-drink-in-the-world">WHISK(E)Y: THE BEST DRINK IN THE WORLD</a></p>
+
+<p>At the bacon is somewhat famous for having at least one talk about booze :).
+While you will not be able to take part in the wisky
+tasting <a href="http://www.billyabbott.co.uk/home/">Billy Abbott</a> still holes an interesting talk about the process of actually creating
+the spirit. Did you know that it is basically distilled beer?</p>
+
+<p><a href="http://devslovebacon.com/conferences/bacon-2014/talks/sweaty-horse-blanket-processing-the-natural-language-of-beer">SWEATY HORSE BLANKET - PROCESSING THE NATURAL LANGUAGE OF BEER</a></p>
+
+<p>Being a bit overwhelmed with the sheer about of choice of beer in Londoner pubs,
+<a href="http://benfields.net">Ben Fields</a> sets out to apply Natural language processing (NLP) to tackle the problem.
+Another highly informative and very entertaining talk.
+Obviously one can not teach the math behind things like
+<a href="http://en.wikipedia.org/wiki/Latent_Dirichlet_allocation">Latent Dirichlet allocation (LDA)</a>
+in a 30 min. talk, but he manages to give the gist across and just show what is
+possible with a bunch of text and an understanding of a domain.</p>
+
+<p><a href="http://devslovebacon.com/conferences/bacon-2014/talks/your-web-stack-would-betray-you-in-an-instant">YOUR WEB STACK WOULD BETRAY YOU IN AN INSTANT</a></p>
+
+<p>Security is a tricky thing. <a href="https://github.com/pimterry">Tim Perry</a> reiterates some exemplary incidents of
+different parts of the web stack in a funny well structured way.
+He also reminds us that best practices are best practices for a reason and that
+many of the incidents could have been avoided if people would run the test they have
+and read their bug trackers.</p>
+
+<h2>Conclusion</h2>
+
+<p>I really liked the <a href="http://devslovebacon.com/">Bacon 2014</a> for its lineup of
+interesting talk about all kind of things.
+You will probably not experience an scientific talk about implementation details
+or the latest distributed algorithm, but chances are you stumble across a talk
+that sparks an interest in
+<a href="http://devslovebacon.com/conferences/bacon-2014/talks/whisk-e-y-the-best-drink-in-the-world">Wisky</a>,
+<a href="http://devslovebacon.com/conferences/bacon-2014/talks/the-joy-of-blink-dot-ino-shining-a-light-on-working-with-hardware">Arduino programming</a>
+or even
+<a href="http://devslovebacon.com/conferences/bacon-2014/talks/the-benefits-of-powerlifting-for-the-desk-bound-geek">Powerlifting</a>.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Moving to London: Banks and Money]]></title>
+    <link href="http://Velrok.github.io/blog/2014/01/26/moving-to-london-banks-and-money/"/>
+    <updated>2014-01-26T15:05:00+00:00</updated>
+    <id>http://Velrok.github.io/blog/2014/01/26/moving-to-london-banks-and-money</id>
+    <content type="html"><![CDATA[<p><img src="http://Velrok.github.io/images/money.jpg" alt="money" /></p>
+
+<p>I moved to London two days ago to start my new job here.
+So this is an attempt to collect information and sources that I found useful.
+This article is specifically about Money and basic Banking stuff.</p>
+
+<!-- more -->
+
+
+<h2>Choosing a bank account for your income</h2>
+
+<p>When you are working in the UK chances are that your employer requires a UK
+bank account that holds your money in Pounds.
+&#8220;Current Account&#8221; is the technical term for an account that is designed to
+collect your income and pay your bills.
+I used <a href="http://www.moneysupermarket.com/current-accounts/search/results/?goal=CUR_INTEREST">money super market</a>
+to find an account suitable to my needs.
+They have good how-tos that cover the basics without being lengthy.</p>
+
+<p>You want to start this early, about 2-3 weeks before you move to the UK.
+This way your account is already set up and you can wire money into it, which
+can take days.
+I missed that and had to hustle with different account debit card limits and
+long money transaction times.
+As soon as you arrive you want to make an appointment to be authenticated.
+This will require you to turn up in person at a branch of the bank with your
+passport.
+Only after you have been authenticated can you withdraw money from your new
+account.</p>
+
+<p>You might get only a standard migrant account, since you will not have a local
+address yet.
+The account you have chosen online will only be available once you can provide
+a credit score and a local address.</p>
+
+<h2>Moving money between the UK and your homeland</h2>
+
+<p>The Current Account might be your primary account for any money business inside
+the UK but if you want to transfer money to a different country it will probably
+get very expensive, because they might charge you as much as 30£ for each transfer.
+They might also give you a slightly worse conversion rate, compared to what
+is possible.</p>
+
+<p>However there are money transfer institutions that specialize in moving money
+to different currencies.
+I used <a href="http://www.money.co.uk/money-transfers/money-transfer-to-germany.htm">money.co.uk</a>
+to get a list of institutions to choose from.
+Again which is the best depends on your circumstances, do you transfer money
+frequently, do you have to transfer large amounts and so forth.
+<a href="http://www.money.co.uk/money-transfers/money-transfer-to-germany.htm">money.co.uk</a>
+helped me to find a good fit for my needs (many low amount transactions
+to my private pension found).</p>
+
+<h3>bitcoin as an alternative?</h3>
+
+<p>If you only want to make a few transactions, and want to circumvent the cross
+country fees, you could try to use a crypto currency like
+<a href="http://www.coindesk.com/information/what-is-bitcoin/">Bitcoin</a> as an
+intermediary currency.
+I found <a href="http://www.coindesk.com/">CoinDesk</a> to be comprehensible.
+However at this point this is just an idea I might try in the next days / weeks.</p>
+
+<h2>Feedback</h2>
+
+<p>As I said I&#8217;m reporting to be best of my knowledge, which isn&#8217;t much.
+If I got something wrong or if you have any remarks please let me
+know, in the comments.
+If this article help you I&#8217;m also happy for any shout out or comment.</p>
+
+<p>Let me know what you think!</p>
+
+<h2>Disclaimer</h2>
+
+<p>Everything written is my personal experience.
+I&#8217;m not an expert on this topics.</p>
+
+<p>For now all of this is strictly theoretical. As of this writing I have not
+signed any contract, because it is a Sunday and all institutions are closed.
+Should anything turn out to be totally off or different I will post an update.</p>
+
+<p>I do not receive any money from any of the mentions websites or institutions.</p>
+
+<p>I&#8217;m writing this disclaimer just because if came to me :).
+I have no idea what I&#8217;m doing ;) .
+Think for yourself ;P.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Clojure Lesson Learned]]></title>
+    <link href="http://Velrok.github.io/blog/2013/09/27/clojure-lesson-learned/"/>
+    <updated>2013-09-27T16:50:00+01:00</updated>
+    <id>http://Velrok.github.io/blog/2013/09/27/clojure-lesson-learned</id>
+    <content type="html"><![CDATA[<h2>background</h2>
+
+<p>I started programming Clojure about 5 month ago. So I am fairly new to the
+language. I&#8217;m using Clojure to write my master thesis, which is a recommendation
+engine for advertisement.
+When you start to build a recommendation engine stuff like
+<a href="http://mahout.apache.org/">Mahout</a> can be a big help.
+But it&#8217;s java :(, which is very unproductive to write.
+So I looked into jython and jruby, which enable you to write python and ruby
+respectively, that runs on the JVM.
+Sadly neither did the trick. Jython is missing a simple way to bundle
+everything up in one uber.jar while jruby had some issues finding the correct
+constructor for one of the mahout classes :(.
+So I seized that opportunity to learn Clojure, and I regret not a second of it.</p>
+
+<p>I&#8217;m now using Clojure and <a href="https://github.com/technomancy/leiningen">Leiningen</a>.
+I chose <a href="http://incanter.org/docs/parallelcolt/api/">Parallel Colt</a>
+as my matrix library, where I use wrapper functions to provide a nicer
+Clojure interface.</p>
+
+<p>I use <a href="http://incanter.org/">incanter</a> for basic data analysis and
+visualisation.</p>
+
+<!-- more -->
+
+
+<h2>likes</h2>
+
+<p>The best thing about Clojure are its persistent and immutable data structures.
+Immutable meand that one can not change a basic data structure in place.
+If you need to add a thing to a vector you simple call a function
+that returns a new vector.
+This is where the persistent part kicks in.
+Persistent means that you are guaranteed the same big O properties.
+Which is to say adding a element to a vector will always take O(1) time no
+matter the size of the vector.
+This is also true for all basic Clojure data structures:</p>
+
+<ul>
+<li>lists</li>
+<li>vectors</li>
+<li>maps</li>
+<li>sets</li>
+</ul>
+
+
+<p>Here is a very good video with Rich Hickey, the father of Clojure, and
+Brian Beckman, where they talk about the inner workings of Clojure.</p>
+
+<p>I can highly recommend this!</p>
+
+<iframe width="420" height="315" src="http://Velrok.github.io//www.youtube.com/embed/wASCH_gPnDw" frameborder="0" allowfullscreen></iframe>
+
+
+<p>Clojure is the first lisp that I am using and I fell in love with
+<a href="http://en.wikipedia.org/wiki/S-expression">s-expressions</a>.
+They allow for highly flexible code and with the combination of macros
+enable anyone to extend the language itself!
+Also there are no syntax exceptions or reserved keywords to remember, because
+everything is a list and the first argument is interpreted to be a function.
+Done. Everything else is based on that rules.</p>
+
+<h2>dislike</h2>
+
+<p>Now its not all fun and games. Clojure, however powerful, is still a young
+language. So there are some things missing:</p>
+
+<ul>
+<li><p>I&#8217;m still looking for a good debugger. As far as I know <a href="https://github.com/pallet/ritz">ritz</a>
+is the best thing you can get right now. However it&#8217;s not trivial to set up
+if you are not using emacs :(.</p></li>
+<li><p>Running on the JVM comes with a startup time :( .</p></li>
+<li>REPL and <a href="https://github.com/clojure/tools.namespace">tools.namespace</a> to
+the rescue. Stuart Sierra has an <a href="https://github.com/clojure/tools.namespace">article about his workflow</a>
+which only reloads code from files that have changed and those depending on them.
+I haven&#8217;t applied that to my workflow now, because I hadn&#8217;t had the need.
+My REPL startup time is about 2 sec. so its OK considering I only have to
+restart it about 1-3 times a day.</li>
+</ul>
+
+
+<h2>lessons learned</h2>
+
+<p>One of my main motivations to try clojure was to utilize its
+<a href="http://en.wikipedia.org/wiki/Transactional_memory">STM: Software Transactional Memory</a>
+which enables you to use agents and atoms and a lot of concurrent goodness.
+So I assumed having to think in concurrent terms would be the big obsticle.</p>
+
+<h3>Immutable data structures rock!</h3>
+
+<p>It turns out that the biggest brain wracker during the first 2 weeks where
+immutable data structures!
+This things force you to think the other way around. You end up writing
+recepies on how to create a new thing by applying a function to each element of
+a input instead of writting recepies on how to change something in place.</p>
+
+<p>Lets assum we want to implement the <a href="http://en.wikipedia.org/wiki/Conway's_Game_of_Life">game of live</a>.</p>
+
+<p>In python a update function could look something like this:</p>
+
+<figure class='code'><figcaption><span>a posible update world function in python </span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="n">world</span><span class="p">):</span>
+</span><span class='line'>  <span class="n">new_world</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span class='line'>  <span class="k">for</span> <span class="n">y</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">world</span><span class="p">):</span>
+</span><span class='line'>    <span class="n">new_row</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span class='line'>    <span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">cell</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">row</span><span class="p">):</span>
+</span><span class='line'>      <span class="n">new_row</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">next_cell_state</span><span class="p">(</span><span class="n">world</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">))</span>
+</span><span class='line'>    <span class="n">new_world</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">new_row</span><span class="p">)</span>
+</span><span class='line'>  <span class="k">return</span> <span class="n">new_world</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This function creates a new world and adds stuff to it while it iterates the
+input world.
+This is typical state manipulating code.</p>
+
+<p>With immutable data structures and functional programming one has to think
+differently:</p>
+
+<figure class='code'><figcaption><span>a posible update world function in clojure </span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='clojure'><span class='line'><span class="p">(</span><span class="kd">defn </span><span class="nv">update</span> <span class="p">[</span><span class="nv">world</span><span class="p">]</span>
+</span><span class='line'>  <span class="p">(</span><span class="nf">map-indext</span> <span class="p">(</span><span class="k">fn </span><span class="p">[</span><span class="nv">y</span> <span class="nv">row</span><span class="p">]</span>
+</span><span class='line'>                <span class="p">(</span><span class="nf">map-indext</span> <span class="p">(</span><span class="k">fn </span><span class="p">[</span><span class="nv">x</span> <span class="nv">cell</span><span class="p">]</span>
+</span><span class='line'>                              <span class="p">(</span><span class="nf">next-cell-state</span> <span class="nv">world</span> <span class="nv">y</span> <span class="nv">x</span><span class="p">))</span>
+</span><span class='line'>                            <span class="nv">row</span><span class="p">))</span>
+</span><span class='line'>              <span class="nv">world</span><span class="p">))</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>In the Clojure version we use map to apply a function to each row and then
+another map to apply another function to each cell. Each map call returns a
+sequence that is implicitly build and returned.
+At no point in time can we change the input world nor do we change a already
+created object.</p>
+
+<p>You can of course write functional code in python using map. However
+pyhton doesn&#8217;t ensure that you do not change the datastructure in place by
+accident.</p>
+
+<h3>use require instead of use</h3>
+
+<p>Namespaces and including and referencing code from other packages was vey
+confusing to me, because to do so you can use <code>(use)</code> <code>(require)</code> and <code>(import)</code>.</p>
+
+<p>When applying <code>use</code> all the functions are imported into the current namespace:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='clojure'><span class='line'><span class="p">(</span><span class="kd">ns </span><span class="nv">my.core</span>
+</span><span class='line'>  <span class="p">(</span><span class="ss">:use</span> <span class="p">[</span><span class="nv">my-lib.core</span><span class="p">]))</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">(</span><span class="nf">hello</span> <span class="s">&quot;world&quot;</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Where <code>require</code> lets you alias packages:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='clojure'><span class='line'><span class="p">(</span><span class="kd">ns </span><span class="nv">my.core</span>
+</span><span class='line'>  <span class="p">(</span><span class="ss">:require</span> <span class="p">[</span><span class="nv">my-lib.core</span> <span class="ss">:as</span> <span class="nv">core</span><span class="p">]))</span>
+</span><span class='line'><span class="p">(</span><span class="nf">core/hello</span> <span class="s">&quot;world&quot;</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>inject state into functions</h3>
+
+<p>One thing that stuck right in my head from the beginning was that everything a
+function operates on should be past in as an argument instead of
+using a gloabel var.
+Stuard Sierra gave a talk titled
+<a href="http://www.infoq.com/presentations/Clojure-Large-scale-patterns-techniques">Clojure in the Large</a>
+that points out why this is the right way to do things and gives tips and
+examples on how to achive this goal in the large.</p>
+
+<h3>Don&#8217;t overuse ->> and -></h3>
+
+<p>It took me a while to understand the
+<a href="http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/->&#8221;>-></a>
+and
+<a href="http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/->>&#8221;>->></a>
+operations.
+You can use thouse to build a pipeline. Which is a beautyfull construct in
+many situations.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+</pre></td><td class='code'><pre><code class='clojure'><span class='line'><span class="c1">; using plain clojure calls:</span>
+</span><span class='line'><span class="c1">; one has to start at the last call, making this difficult to follow</span>
+</span><span class='line'><span class="p">(</span><span class="nb">filter </span><span class="o">#</span><span class="p">(</span><span class="nb">= </span><span class="mi">0</span> <span class="p">(</span><span class="nb">rem </span><span class="nv">%</span> <span class="mi">4</span><span class="p">))</span> <span class="c1">; only include the ones that are multiple of 4</span>
+</span><span class='line'>        <span class="p">(</span><span class="nb">map </span><span class="o">#</span><span class="p">(</span><span class="nb">+ </span><span class="mi">1</span> <span class="nv">%</span><span class="p">)</span> <span class="c1">; add one to each</span>
+</span><span class='line'>             <span class="p">(</span><span class="nb">map </span><span class="o">#</span><span class="p">(</span><span class="nb">* </span><span class="mi">3</span> <span class="nv">%</span><span class="p">)</span> <span class="c1">; multiply each by 3</span>
+</span><span class='line'>                  <span class="p">(</span><span class="nb">filter </span><span class="nv">odd?</span> <span class="c1">; only include the odd ones</span>
+</span><span class='line'>                          <span class="p">(</span><span class="nb">range </span><span class="mi">20</span><span class="p">)))))</span> <span class="c1">; numbers from 0 to 19</span>
+</span><span class='line'><span class="c1">; =&gt; (4 16 28 40 52)</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">; using the -&gt;&gt; pipe, where the result of the last call</span>
+</span><span class='line'><span class="c1">; is used as the last argument in the next function</span>
+</span><span class='line'><span class="p">(</span><span class="nf">-&gt;&gt;</span> <span class="p">(</span><span class="nb">range </span><span class="mi">20</span><span class="p">)</span>
+</span><span class='line'>     <span class="p">(</span><span class="nb">filter </span><span class="nv">odd?</span><span class="p">)</span>
+</span><span class='line'>     <span class="p">(</span><span class="nb">map </span><span class="o">#</span><span class="p">(</span><span class="nb">* </span><span class="mi">3</span> <span class="nv">%</span><span class="p">))</span>
+</span><span class='line'>     <span class="p">(</span><span class="nb">map </span><span class="o">#</span><span class="p">(</span><span class="nb">+ </span><span class="mi">1</span> <span class="nv">%</span><span class="p">))</span>
+</span><span class='line'>     <span class="p">(</span><span class="nb">filter </span><span class="o">#</span><span class="p">(</span><span class="nb">= </span><span class="mi">0</span> <span class="p">(</span><span class="nb">rem </span><span class="nv">%</span> <span class="mi">4</span><span class="p">))))</span>
+</span><span class='line'><span class="c1">; =&gt; (4 16 28 40 52)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>However when you find yourself writing huge anonymous functions
+that draw from previus defined variables for example in a
+<a href="http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/let">let</a>
+it is probably time to reconsider your code :) and use plain let to
+store and name intermediat results.</p>
+
+<h3>Test first!</h3>
+
+<p>This is and remains true. You shall test first and implement later!</p>
+
+<p>Beeing new to the language the REPL helped me a lot.
+I used it to experiment with code snippets quickly.
+Especially when you are not sure how the output of a function looks exactly,
+it&#8217;s nice to play around with it a little in the REPL.</p>
+
+<p>However I missed going back and fixiate this in test cases.
+I got lazy and tried to cut corners by skipping the tests.
+Gues what it came back to bite me only 2 weeks later. Write tests!</p>
+
+<p>The default Test framework for Clojure seams to be
+<a href="https://github.com/marick/Midje">midje</a>.
+However I liked my classical TDD/BDD DSL so I used <a href="http://speclj.com/">speclj</a>.
+Running <code>lein spec -a</code> on the command line will autotest all the functions and
+rerun tests of files that were changed.
+It does keep a JVM running so it&#8217;s fast.
+However, every time you remove definitions you need to restart the call, because
+it will keep the old definition around.
+So if you still have code that depends on the allegedly removed function your
+test will not fail until you restart the JVM.</p>
+
+<h3>Making things run on multiple cores is easy.</h3>
+
+<p>If you use <code>map</code> a lot making things run on multiple cores is easy:
+just replace <code>map</code> with a <code>pmap</code>. This will execute the function in parallel using
+multiple cores.
+While this is a valid and easy step, it is only beneficial if the function
+takes some time to run. Otherwise the overhead of <code>pmap</code> will midigate the effect
+and you end up beeing slower.
+So start at the out calls and see how far you can get.</p>
+
+<p>If you need better prallel performance Clojure gives you the new
+<a href="http://clojure.com/blog/2012/05/08/reducers-a-library-and-model-for-collection-processing.html">reducers</a>.
+They sacrifice lazyness to give you a fork join abstraction that uses map
+reduce semantics.
+I did read the article, but did not have the time to experiment a lot with it.</p>
+
+<p>Also <a href="https://github.com/clojure/core.async">core.async</a>
+gives you Go like lightweight threads and channel semantics.
+Drew Olson has a nice
+<a href="http://blog.drewolson.org/blog/2013/07/04/clojure-core-dot-async-and-go-a-code-comparison/">article comparing clojure core.async with go</a>.</p>
+
+<h2>vim and clojure</h2>
+
+<p>I started to code Clojure using Sublime.
+While it has a nice REPL, which shows the last command send to it, it turned out
+to be quiet unstable :( .
+So I switched to vim using <a href="https://github.com/tpope/vim-fireplace">vim-fireplace</a>,
+which REPL integration is more stable.
+It also comes with invaluable :Doc and :Source commands which deliver the
+documentation of the source of a function, respectively.
+Sadly ctags has no support for Clojure, but you can use the lisp version for now.
+You don&#8217;t want to miss out on <a href="https://github.com/kien/rainbow_parentheses.vim">rainbow parentheses</a>
+;).
+The vim commands <code>y%</code>and <code>d%</code> are big time and brain power savers, because they
+let you copy or delete a complete s-expression.</p>
+
+<h2>conclusion</h2>
+
+<p>There are many things I like about Clojure so far.
+It has great java integration and dependency management, it&#8217;s dynamic and fast.
+Learning it is not easy, if you come from a traditional OO background but it is
+worth your time, because you will become a better developer.
+Obviously I didn&#8217;t spent enough time with it to feel the pain every tool brings
+with it if you use it intensively.
+The development setup is decent while not perfect jet, but it is still quiet a
+young language.</p>
+
+<p>I can recommend you give it a spin :) .</p>
+
+<p>If you live in the cologne area you can find me at the
+<a href="http://www.meetup.com/clojure-cologne/">Cologne Clojure User Group</a>,
+or just leave me a comment :) .</p>
+
+<p>Thanks for reading all my ramblings ;).
+I hope it was worth your time.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Clojure Getting Started: Setting Up]]></title>
+    <link href="http://Velrok.github.io/blog/2013/07/17/clojure-ggetting-started/"/>
+    <updated>2013-07-17T10:54:00+01:00</updated>
+    <id>http://Velrok.github.io/blog/2013/07/17/clojure-ggetting-started</id>
+    <content type="html"><![CDATA[<h2>Setting Up a Project</h2>
+
+<p>Clojure runs on the JVM so you need a recent
+<a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">JDK</a>
+version installed
+(Java 6 or newer should do).</p>
+
+<p>To create a new Clojure project we use <a href="https://github.com/technomancy/leiningen">Leiningen</a>.
+On Mac OS it&#8217;s just a</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>brew install leiningen</span></code></pre></td></tr></table></div></figure>
+
+
+<p>away.</p>
+
+<p>This will install Leiningen 2.
+Version 2 breaks compatibility with the old plugin system, but most projects
+that supply Leiningen have a description how to add them to your project.clj
+for each version.
+However if you start a new project, always go with Leiningen 2.</p>
+
+<p>To create our getting started project (we will name it greenfield-clojure) run:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>lein new greenfield-clojure</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This will create a new folder. For the rest of this writing all file paths will
+be relative to this folder.</p>
+
+<p>You should see a <code>project.clj</code> file looking something like this</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='clojure'><span class='line'><span class="p">(</span><span class="kd">defproject </span><span class="nv">greenfield-clojure</span> <span class="s">&quot;0.1.0-SNAPSHOT&quot;</span>
+</span><span class='line'>  <span class="ss">:description</span> <span class="s">&quot;FIXME: write description&quot;</span>
+</span><span class='line'>  <span class="ss">:url</span> <span class="s">&quot;http://example.com/FIXME&quot;</span>
+</span><span class='line'>  <span class="ss">:license</span> <span class="p">{</span><span class="ss">:name</span> <span class="s">&quot;Eclipse Public License&quot;</span>
+</span><span class='line'>            <span class="ss">:url</span> <span class="s">&quot;http://www.eclipse.org/legal/epl-v10.html&quot;</span><span class="p">}</span>
+</span><span class='line'>  <span class="ss">:dependencies</span> <span class="p">[[</span><span class="nv">org.clojure/clojure</span> <span class="s">&quot;1.5.1&quot;</span><span class="p">]])</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>As you can see Clojure itself is defined as a dependency.
+As of this writing the latest version is 1.5.1 .</p>
+
+<p>Now run</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>lein deps
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>which will download and install all specified dependencies.</p>
+
+<p>During this project we will add additional dependencies to this project.
+<a href="https://clojars.org/clj-http">CloJars</a> is a repository for Clojure libaries.
+There you can find a lot of interesting stuff.
+You can also include Java dependencies from <a href="http://search.maven.org/">Maven Central</a>.
+Please consult the Leiningen <a href="https://github.com/technomancy/leiningen/blob/stable/sample.project.clj">sample.project.clj</a>
+for further information.</p>
+
+<!-- more -->
+
+
+<h2>The REPL</h2>
+
+<p>The REPL is a interactive environment where you can run Clojure code, in the
+context of your project.</p>
+
+<p>To start a REPL run:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>lein repl
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This will also download and install all dependencies that are given in the
+project.clj.</p>
+
+<p>Now we can start and enter a simple <strong>hello world</strong> into the repl:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='clojure'><span class='line'><span class="p">(</span><span class="nb">println </span><span class="s">&quot;Hello world!&quot;</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Setting Up Your Editor</h2>
+
+<h3>Sublime Text 2</h3>
+
+<p>I started out, using Sublime Text 2.
+It&#8217;s a good start. I can recommend installing <a href="https://github.com/wuub/SublimeREPL">SublimeREPL</a>.
+Clojure development uses the REPL extensively, so your editor should
+come with some kind of REPL integration.</p>
+
+<p>I found SublimeREPL to be less stable as I would have liked.
+So I switched to vim.</p>
+
+<p>One of the best editors for Clojure is Emacs, but I just can&#8217;t get
+used to it :). All Emacs folks out there: please leave plugin recommendations
+in the comments, I will integrate them.</p>
+
+<h3>vim</h3>
+
+<p>As mentioned above I switched from Sublime to vim, because of its better REPL
+integration
+via the <a href="https://github.com/tpope/vim-fireplace">fireplace.vim</a> plugin,
+proved to be more stable.</p>
+
+<p>Once your setup is complete you will be able to send the complete file or
+single calls - under the cursor - to the REPL.
+Make sure this works. We will use it in the future of this tutorial.
+You can of course just continuously copy and paste the snippets to the REPL by
+hand. However that is very tedious and time consuming.</p>
+
+<p>You want to use the REPL, because restating the JVM, just to execute one file,
+takes seconds, which makes for a very frustrating feedback cycle.</p>
+
+<p>While you are at it you might also want to install
+<a href="https://github.com/kien/rainbow_parentheses.vim">rainbow_parentheses.vim</a>.
+It will highlight matching parenthesis in the same color, while giving each pair
+an individual color.</p>
+
+<h2>Structuring Code</h2>
+
+<h3>Files and Namespaces</h3>
+
+<p>If you followed the tutorial and have created the <em>greenfeld_project</em> you will
+find a file called <code>src/greenfeld_project/core.clj</code>.
+This is the default starting point.</p>
+
+<p>The first line of the file should look like this:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='clojure'><span class='line'><span class="p">(</span><span class="kd">ns </span><span class="nv">greenfield-clojure.core</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><code>ns</code> creates the new <em>namespace</em> <code>greenfeld-clojure</code>.
+Namespaces in Clojure have to respond to the file structure.</p>
+
+<p>Given a namespace <code>greenfield-clojure.domain.user</code> it will look for a file in
+<code>src/greenfeld_clojure/domain/user.clj</code>.
+Notice that it uses <code>_</code> for file names and <code>-</code> for the namespaces.</p>
+
+<p>Lets create a new clj file:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='clojure'><span class='line'><span class="nv">touch</span> <span class="nv">src/greenfield_clojure/util.clj</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Following the naming schema we start a fitting namespace for that file by
+adding:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='clojure'><span class='line'><span class="p">(</span><span class="kd">ns </span><span class="nv">greenfield-clojure.util</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>All the following definitions will go into that namespace.</p>
+
+<p>Now lets add a simple greeting function:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='clojure'><span class='line'><span class="p">(</span><span class="kd">ns </span><span class="nv">greenfield-clojure.util</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">(</span><span class="kd">defn </span><span class="nv">greet</span> <span class="p">[</span><span class="nv">name</span><span class="p">]</span>
+</span><span class='line'>  <span class="p">(</span><span class="nb">str </span><span class="s">&quot;Welcome, &quot;</span> <span class="nb">name </span><span class="s">&quot;!&quot;</span><span class="p">))</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>In the same namespace you can make a test call: <code>(greet "Jane")</code>.</p>
+
+<p>If you have your REPL going just put the code below the function definition
+itself and send it to the REPL for evaluation.
+You can remove the code afterwards.</p>
+
+<p>This way you can quickly sketch together some code and move and refactor later.</p>
+
+<p>If you use the REPL via command line you can switch to this namespae (or any other valid
+namespace) by calling:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='clojure'><span class='line'><span class="p">(</span><span class="kd">ns </span><span class="nv">greenfield-clojure.util</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Using Code from other Namespaces</h3>
+
+<p>We don&#8217;t just want to create namespaces, we want to use stuff that is
+located in other namespaces. We can do so by useing <code>use</code> and <code>require</code>.</p>
+
+<h4>use</h4>
+
+<p><code>use</code> will include all the vars (function definitions are just vars that point
+to functions) into the current namespace.
+This will NOT pull vars the used namespace itself includes via <code>use</code>.
+None the less: this pollutes you namespace and it gets harder to avoid clashes
+and find where functions are defined.
+However if you want to use clojure core namespaces - for example - it sometimes
+makes for nicer code.</p>
+
+<p>Here we include <code>clojure.set</code> operations with the <code>use</code> function:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='clojure'><span class='line'><span class="p">(</span><span class="nf">use</span> <span class="ss">&#39;clojure.set</span><span class="p">)</span>
+</span><span class='line'><span class="p">(</span><span class="nb">intersection </span><span class="o">#</span><span class="p">{</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">}</span> <span class="o">#</span><span class="p">{</span><span class="mi">3</span> <span class="mi">4</span> <span class="mi">5</span><span class="p">})</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Notice that we need to quote the namespace, using a <code>'</code>.</p>
+
+<p>This is useful when working in the REPL itself, but when you write files it&#8217;s
+better to include this in the <code>ns</code> call directly useing <code>require</code> instead.</p>
+
+<h4>require</h4>
+
+<p>We have seen that <code>use</code>, while nice in some cases, pollutes our namespace.</p>
+
+<p>Instead we use <code>require</code>. Let us require our util namespace from the core
+namespace:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='clojure'><span class='line'><span class="p">(</span><span class="kd">ns </span><span class="nv">greenfield-clojure.core</span><span class="p">)</span>
+</span><span class='line'><span class="p">(</span><span class="nf">require</span> <span class="o">&#39;</span><span class="p">(</span><span class="nf">greenfield-clojure</span> <span class="p">[</span><span class="nv">util</span> <span class="ss">:as</span> <span class="nv">util</span><span class="p">]))</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Now this is very cumbersome. Instead we can include everything we want to
+require directly in the <code>ns</code> call:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='clojure'><span class='line'><span class="p">(</span><span class="kd">ns </span><span class="nv">greenfield-clojure.core</span>
+</span><span class='line'>  <span class="p">(</span><span class="ss">:require</span> <span class="p">[</span><span class="nv">greenfield-clojure.util</span> <span class="ss">:as</span> <span class="nv">util</span><span class="p">]))</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>With our utils library required, we can call its functions like this:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='clojure'><span class='line'><span class="p">(</span><span class="nf">util/greet</span> <span class="s">&quot;Xavier&quot;</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>In clojure the <code>/</code> is used to reference vars from a different namespace.</p>
+
+<p><strong>Update:</strong>
+Thanks to Pierre Mariani for pointing out that if you want to include
+every var from another namespace into the current namespace like <code>use</code> would
+you can and should use the following variant of require:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='clojure'><span class='line'><span class="p">(</span><span class="kd">ns </span><span class="nv">greenfield-clojure.core</span>
+</span><span class='line'>  <span class="p">(</span><span class="ss">:require</span> <span class="p">[</span><span class="nv">clojure.set</span> <span class="ss">:refer</span> <span class="p">[</span><span class="nv">intersection</span><span class="p">]]))</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">(</span><span class="nb">intersection </span><span class="o">#</span><span class="p">{</span><span class="mi">1</span> <span class="mi">2</span><span class="p">}</span> <span class="o">#</span><span class="p">{</span><span class="mi">2</span> <span class="mi">3</span><span class="p">})</span>
+</span><span class='line'><span class="c1">; =&gt; #{2}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Or if you want to refer everything from the namespace replace
+<code>[intersection]</code> with <code>:all</code>.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='clojure'><span class='line'><span class="p">(</span><span class="kd">ns </span><span class="nv">greenfield-clojure.core</span>
+</span><span class='line'>  <span class="p">(</span><span class="ss">:require</span> <span class="p">[</span><span class="nv">clojure.set</span> <span class="ss">:refer</span> <span class="ss">:all</span><span class="p">]))</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>I admit the hole requiring other namespaces is confusing. But I can also
+promise you that all the other stuff is much more thought thou and has more
+of a theme to it.
+Now if you are interested or still confused
+<a href="http://blog.8thlight.com/colin-jones/2010/12/05/clojure-libs-and-namespaces-require-use-import-and-ns.html">Colin Jones explains requiring code</a>
+in more detail.</p>
+
+<h2>Executing from the Command Line</h2>
+
+<p>Util now we only executed our code using a REPL, but at some point in time
+we will want to start our program from the command line.</p>
+
+<p>There are two ways to do this:</p>
+
+<ol>
+<li>use leiningen</li>
+<li>package everything up into one big jar file</li>
+</ol>
+
+
+<p>In any case our main namespace must contain a <code>-main</code> function that takes
+a variable number of arguments:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='clojure'><span class='line'><span class="p">(</span><span class="kd">defn </span><span class="nv">-main</span><span class="p">[</span><span class="o">&amp;</span> <span class="nv">args</span><span class="p">]</span>
+</span><span class='line'>  <span class="p">(</span><span class="nb">println </span><span class="p">(</span><span class="nf">util/greet</span> <span class="s">&quot;Xavier&quot;</span><span class="p">)))</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This will just always print the same greeting.</p>
+
+<h3>Running with Leiningen</h3>
+
+<p>Using leiningen we can call:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='clojure'><span class='line'><span class="nv">lein</span> <span class="nv">run</span> <span class="nv">-m</span> <span class="nv">greenfield-clojure.core</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><code>-m</code> tells Leiningen which namespace to use for execution.
+The namespace must include a <code>-main</code> function.
+<em>Notice the <code>-</code> before the main</em>.</p>
+
+<p>We can also specify the main namespace in our <code>project.clj</code>:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='clojure'><span class='line'><span class="p">(</span><span class="kd">defproject </span><span class="nv">greenfield-clojure</span> <span class="s">&quot;0.1.0-SNAPSHOT&quot;</span>
+</span><span class='line'>  <span class="ss">:description</span> <span class="s">&quot;FIXME: write description&quot;</span>
+</span><span class='line'>  <span class="ss">:url</span> <span class="s">&quot;http://example.com/FIXME&quot;</span>
+</span><span class='line'>  <span class="ss">:license</span> <span class="p">{</span><span class="ss">:name</span> <span class="s">&quot;Eclipse Public License&quot;</span>
+</span><span class='line'>            <span class="ss">:url</span> <span class="s">&quot;http://www.eclipse.org/legal/epl-v10.html&quot;</span><span class="p">}</span>
+</span><span class='line'>  <span class="ss">:main</span> <span class="nv">greenfield-clojure.core</span>
+</span><span class='line'>  <span class="ss">:dependencies</span> <span class="p">[[</span><span class="nv">org.clojure/clojure</span> <span class="s">&quot;1.4.0&quot;</span><span class="p">]])</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Now we can omit the <code>-m ...</code> part:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='clojure'><span class='line'><span class="nv">lein</span> <span class="nv">run</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Creating an Uberjar</h3>
+
+<p>We can use Leiningen to package everything up into one big jar that can be
+executed very simply.</p>
+
+<p>For that we have to set the main namespace (same thing we did above):</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='clojure'><span class='line'><span class="p">(</span><span class="kd">defproject </span><span class="nv">greenfield-clojure</span> <span class="s">&quot;0.1.0-SNAPSHOT&quot;</span>
+</span><span class='line'>  <span class="ss">:description</span> <span class="s">&quot;FIXME: write description&quot;</span>
+</span><span class='line'>  <span class="ss">:url</span> <span class="s">&quot;http://example.com/FIXME&quot;</span>
+</span><span class='line'>  <span class="ss">:license</span> <span class="p">{</span><span class="ss">:name</span> <span class="s">&quot;Eclipse Public License&quot;</span>
+</span><span class='line'>            <span class="ss">:url</span> <span class="s">&quot;http://www.eclipse.org/legal/epl-v10.html&quot;</span><span class="p">}</span>
+</span><span class='line'>  <span class="ss">:main</span> <span class="nv">greenfield-clojure.core</span>
+</span><span class='line'>  <span class="ss">:dependencies</span> <span class="p">[[</span><span class="nv">org.clojure/clojure</span> <span class="s">&quot;1.4.0&quot;</span><span class="p">]])</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>But because this will be called directly, we have to tell clojure that it should
+compile the clojure code into a java class when creating the jar.
+To do this add a <code>(:gen-class)</code> argument to the <code>ns</code> call:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='clojure'><span class='line'><span class="p">(</span><span class="kd">ns </span><span class="nv">greenfield-clojure.core</span>
+</span><span class='line'>  <span class="p">(</span><span class="ss">:require</span> <span class="p">[</span><span class="nv">greenfield-clojure.util</span> <span class="ss">:as</span> <span class="nv">util</span><span class="p">])</span>
+</span><span class='line'>  <span class="p">(</span><span class="ss">:gen-class</span><span class="p">))</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This is call AOT (Ahead of Time Compilation).
+It&#8217;s sufficient to do this for the main namespace only.
+You should be careful with this. In case implementations of core clojure
+functionality change your ATO compiled code might not be compatible without a
+renewed compilation.</p>
+
+<p>A call to</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='clojure'><span class='line'><span class="nv">lein</span> <span class="nv">uberjar</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>will create a standalone jar in the <code>target</code> folder.</p>
+
+<p>Run it via</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='clojure'><span class='line'><span class="nv">java</span> <span class="nv">-jar</span> <span class="nv">target/greenfield-clojure-0.1.0-SNAPSHOT-standalone.jar</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Summary</h2>
+
+<p>We have done it!</p>
+
+<p>In this tutorial we:</p>
+
+<ol>
+<li>setup and installed clojure from scratch</li>
+<li>fired up a REPL for interactive development</li>
+<li>configured our favorite editor (if it is Sublime or vim ;) )</li>
+<li>learned how the file structure matches up to namespaces</li>
+<li>how to create our own namespace</li>
+<li>how to include code from other namespaces</li>
+<li>we used leiningen to run our code from the command line</li>
+<li>bundled everything up in one nice care-free jar that can be pushed around the computing world</li>
+</ol>
+
+
+<p>I hope this tutorial was helpful or interesting.</p>
+
+<p>Any feedback is much appreciated.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[moving the counter into the foreach loop]]></title>
+    <link href="http://Velrok.github.io/blog/2013/04/29/moving-the-counter-into-the-foreach-loop/"/>
+    <updated>2013-04-29T01:59:00+01:00</updated>
+    <id>http://Velrok.github.io/blog/2013/04/29/moving-the-counter-into-the-foreach-loop</id>
+    <content type="html"><![CDATA[<p>Recently I did a little code review for a friend of mine.
+He needed a counter while iterating items of a list.
+He solved it the same way I did - many times befor, always a little bit annoyed by the fact that I needed to declare and incredent the counter myself.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="n">stuff</span> <span class="o">=</span> <span class="p">[</span><span class="s">&quot;some thing&quot;</span><span class="p">,</span> <span class="s">&quot;some thing else&quot;</span><span class="p">]</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span class='line'><span class="k">for</span> <span class="n">thing</span> <span class="ow">in</span> <span class="n">stuff</span><span class="p">:</span>
+</span><span class='line'>  <span class="k">print</span> <span class="s">&quot;processing item {} of {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">stuff</span><span class="p">))</span>
+</span><span class='line'>  <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Python comes with this nice <code>for i in list</code> formulation, so taking care of a counter seperatly seamed wrong.</p>
+
+<h2>update</h2>
+
+<p>Big thanks to <a href="https://plus.google.com/108719046880594833475/posts">Rafa Rodríguez</a> for pointing me to <code>enumerate</code></p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="n">stuff</span> <span class="o">=</span> <span class="p">[</span><span class="s">&quot;some thing&quot;</span><span class="p">,</span> <span class="s">&quot;some thing else&quot;</span><span class="p">]</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">thing</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">stuff</span><span class="p">):</span>
+</span><span class='line'>  <span class="k">print</span> <span class="s">&quot;processing item {} of {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">stuff</span><span class="p">))</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><em>You can skipp the rest :) .</em></p>
+
+<!-- more -->
+
+
+<hr />
+
+<p>Indeed I came up with the following refactoring:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="n">stuff</span> <span class="o">=</span> <span class="p">[</span><span class="s">&quot;some thing&quot;</span><span class="p">,</span> <span class="s">&quot;some thing else&quot;</span><span class="p">]</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">for</span> <span class="n">thing</span><span class="p">,</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">stuff</span><span class="p">,</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">stuff</span><span class="p">))):</span>
+</span><span class='line'>  <span class="k">print</span> <span class="s">&quot;processing item {} of {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">stuff</span><span class="p">))</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><code>zip</code> takes n lists and combines thouse elements into tubles, drawing from all lists, stoping if one of the lists is exeeded. This makes it very usefull in combination with infinit lists.</p>
+
+<p>Ok now this takes care of incrementing <code>i</code> for us, nice :) .
+However it&#8217;s still cumbersome to have to specify the range.
+What we really want is a lazy sequenze of integers that just counts up starting at a value of our choosing.
+Python <a href="http://docs.python.org/2/library/itertools.html">itertools</a> to the rescure.
+The iter tools provide a <code>count()</code> function that returns this generator:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">def</span> <span class="nf">count</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+</span><span class='line'>    <span class="c"># count(10) --&gt; 10 11 12 13 14 ...</span>
+</span><span class='line'>    <span class="c"># count(2.5, 0.5) -&gt; 2.5 3.0 3.5 ...</span>
+</span><span class='line'>    <span class="n">n</span> <span class="o">=</span> <span class="n">start</span>
+</span><span class='line'>    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+</span><span class='line'>        <span class="k">yield</span> <span class="n">n</span>
+</span><span class='line'>        <span class="n">n</span> <span class="o">+=</span> <span class="n">step</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>So we can rewrite our code to:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">count</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">stuff</span> <span class="o">=</span> <span class="p">[</span><span class="s">&quot;some thing&quot;</span><span class="p">,</span> <span class="s">&quot;some thing else&quot;</span><span class="p">]</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">for</span> <span class="n">thing</span><span class="p">,</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">stuff</span><span class="p">,</span> <span class="n">count</span><span class="p">(</span><span class="mi">1</span><span class="p">))):</span>
+</span><span class='line'>  <span class="k">print</span> <span class="s">&quot;processing item {} of {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">stuff</span><span class="p">))</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Note that by calling <code>count(1)</code> the sequence starts at 1,
+removing the need to call <code>i + 1</code> in the print statement all together.</p>
+
+<p>In the end I was very pleased to finally having found - what I belive to be - a beautiefull solution to this problem in python.</p>
+
+<p>Feel free to comment or contact me on twitter.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[hello world]]></title>
+    <link href="http://Velrok.github.io/blog/2013/04/29/hello-world/"/>
+    <updated>2013-04-29T01:17:00+01:00</updated>
+    <id>http://Velrok.github.io/blog/2013/04/29/hello-world</id>
+    <content type="html"><![CDATA[<p>Hello world, again.</p>
+
+<p>This is about the 4th blog I started.</p>
+
+<p>This time it should be around for longer, beacaue <a href="http://octopress.org/">octopress</a> is nicer than wordpress - from a programmers standpoint :) .
+Also since it&#8217;s hosted on <a href="www.github.com">github</a> - I will not losse it.</p>
+
+<blockquote>
+  &#8220;The significant problems we face cannot be solved at the same level of thinking we were at when we created them.&#8221;<br>
+  - Albert Einstein (1879-1955)
+</blockquote>
+
+
+
+
+<figure class='code'><figcaption><span>clojure</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='clojure'><span class='line'><span class="p">(</span><span class="kd">defn </span><span class="nv">hello</span> <span class="p">[</span><span class="nv">name</span><span class="p">]</span>
+</span><span class='line'>  <span class="p">(</span><span class="nb">println </span><span class="s">&quot;hello, &quot;</span> <span class="nv">name</span><span class="p">))</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">(</span><span class="nf">hello</span> <span class="s">&quot;world&quot;</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span>python</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">def</span> <span class="nf">hello</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+</span><span class='line'>  <span class="k">print</span> <span class="s">&quot;hello, &quot;</span><span class="p">,</span> <span class="n">name</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">hello</span><span class="p">(</span><span class="s">&quot;world&quot;</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span>ruby</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">def</span> <span class="nf">hello</span><span class="p">(</span><span class="nb">name</span><span class="p">)</span>
+</span><span class='line'>  <span class="nb">puts</span> <span class="s2">&quot;hello, </span><span class="si">#{</span><span class="nb">name</span><span class="si">}</span><span class="s2">&quot;</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">hello</span> <span class="s2">&quot;world&quot;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
+  
+</feed>

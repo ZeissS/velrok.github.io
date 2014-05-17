@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: python | Mein(un)sinn]]></title>
+  <link href="http://Velrok.github.io/blog/categories/python/atom.xml" rel="self"/>
+  <link href="http://Velrok.github.io/"/>
+  <updated>2014-05-17T16:25:36+01:00</updated>
+  <id>http://Velrok.github.io/</id>
+  <author>
+    <name><![CDATA[velrok]]></name>
+    <email><![CDATA[]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[moving the counter into the foreach loop]]></title>
+    <link href="http://Velrok.github.io/blog/2013/04/29/moving-the-counter-into-the-foreach-loop/"/>
+    <updated>2013-04-29T01:59:00+01:00</updated>
+    <id>http://Velrok.github.io/blog/2013/04/29/moving-the-counter-into-the-foreach-loop</id>
+    <content type="html"><![CDATA[<p>Recently I did a little code review for a friend of mine.
+He needed a counter while iterating items of a list.
+He solved it the same way I did - many times befor, always a little bit annoyed by the fact that I needed to declare and incredent the counter myself.</p>
+
+<p>``` python</p>
+
+<p>stuff = ["some thing", "some thing else"]</p>
+
+<p>i = 0
+for thing in stuff:
+  print "processing item {} of {}".format(i + 1, len(stuff))
+  i += 1</p>
+
+<p>```</p>
+
+<p>Python comes with this nice <code>for i in list</code> formulation, so taking care of a counter seperatly seamed wrong.</p>
+
+<h2>update</h2>
+
+<p>Big thanks to <a href="https://plus.google.com/108719046880594833475/posts">Rafa Rodríguez</a> for pointing me to <code>enumerate</code></p>
+
+<p>``` python
+stuff = ["some thing", "some thing else"]</p>
+
+<p>for i, thing in enumerate(stuff):
+  print "processing item {} of {}".format(i + 1, len(stuff))</p>
+
+<p>```</p>
+
+<p><em>You can skipp the rest :) .</em></p>
+
+<!-- more -->
+
+
+<hr />
+
+<p>Indeed I came up with the following refactoring:</p>
+
+<p>``` python</p>
+
+<p>stuff = ["some thing", "some thing else"]</p>
+
+<p>for thing, i in zip(stuff, range(len(stuff))):
+  print "processing item {} of {}".format(i + 1, len(stuff))</p>
+
+<p>```</p>
+
+<p><code>zip</code> takes n lists and combines thouse elements into tubles, drawing from all lists, stoping if one of the lists is exeeded. This makes it very usefull in combination with infinit lists.</p>
+
+<p>Ok now this takes care of incrementing <code>i</code> for us, nice :) .
+However it's still cumbersome to have to specify the range.
+What we really want is a lazy sequenze of integers that just counts up starting at a value of our choosing.
+Python <a href="http://docs.python.org/2/library/itertools.html">itertools</a> to the rescure.
+The iter tools provide a <code>count()</code> function that returns this generator:</p>
+
+<p>```python
+def count(start=0, step=1):</p>
+
+<pre><code># count(10) --&gt; 10 11 12 13 14 ...
+# count(2.5, 0.5) -&gt; 2.5 3.0 3.5 ...
+n = start
+while True:
+    yield n
+    n += step
+</code></pre>
+
+<p>```</p>
+
+<p>So we can rewrite our code to:</p>
+
+<p>``` python
+from itertools import count</p>
+
+<p>stuff = ["some thing", "some thing else"]</p>
+
+<p>for thing, i in zip(stuff, count(1))):
+  print "processing item {} of {}".format(i, len(stuff))
+```</p>
+
+<p>Note that by calling <code>count(1)</code> the sequence starts at 1,
+removing the need to call <code>i + 1</code> in the print statement all together.</p>
+
+<p>In the end I was very pleased to finally having found - what I belive to be - a beautiefull solution to this problem in python.</p>
+
+<p>Feel free to comment or contact me on twitter.</p>
+]]></content>
+  </entry>
+  
+</feed>

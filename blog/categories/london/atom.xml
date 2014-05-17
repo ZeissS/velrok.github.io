@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: London | Mein(un)sinn]]></title>
+  <link href="http://Velrok.github.io/blog/categories/london/atom.xml" rel="self"/>
+  <link href="http://Velrok.github.io/"/>
+  <updated>2014-05-17T16:25:36+01:00</updated>
+  <id>http://Velrok.github.io/</id>
+  <author>
+    <name><![CDATA[velrok]]></name>
+    <email><![CDATA[]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Developers Love Bacon - Conference]]></title>
+    <link href="http://Velrok.github.io/blog/2014/05/17/developers-love-bacon-conference/"/>
+    <updated>2014-05-17T14:45:00+01:00</updated>
+    <id>http://Velrok.github.io/blog/2014/05/17/developers-love-bacon-conference</id>
+    <content type="html"><![CDATA[<p><img src="/images/bacon_2014.png" alt="bacon" /></p>
+
+<blockquote><p>BACON is a two-day conference on all the things developers love.</p></blockquote>
+
+<p>And that is exactly what it is. A friendly get together of people that like to code
+and other things they are interested in.
+All talks are limited to 30 min and come in a huge variety.
+Thus the talks are more about general inspiration than about hard facts.</p>
+
+<!-- more -->
+
+
+<p>Due to the fact, that the conference runs two
+tracks in parallel I could only attend about half of the talks.</p>
+
+<h2>My Highlights</h2>
+
+<p><a href="http://devslovebacon.com/conferences/bacon-2014/talks/from-colo-to-yolo-confessions-of-the-angriest-archivist">FROM COLO TO YOLO: CONFESSIONS OF THE ANGRIEST ARCHIVIST</a></p>
+
+<p><a href="http://ascii.textfiles.com/">Jason Scott</a>,
+was probably the most entertaining and passionate speaker at the conf.
+What starts out a bit wired and arty progresses into a talk that conveys his passion
+for saving the cultural data that is hosted and bound inside all the new shiny
+online services (instagram for cats anyone?).
+Specially in cases where all the data is about to permanently to disappear, with
+30 days notice.</p>
+
+<p><a href="http://devslovebacon.com/conferences/bacon-2014/talks/coding-and-the-mozart-effect">CODING AND THE MOZART EFFECT</a></p>
+
+<p>Everyone likes music. So does <a href="@aspleenic">PJ Hagerty</a>.
+Given the right mix you can increase your concentration and get cleverer, at least for a couple of
+minutes / hours.
+Watch PJs talk for more information and a great presentation of what is possible
+with music and how you can get new listening material that is both new and
+interesting.</p>
+
+<p><a href="http://devslovebacon.com/conferences/bacon-2014/talks/living-with-ocd">LIVING WITH OCD</a></p>
+
+<p><a href="https://sethvargo.com">Seth Vargo</a> has a condition. While his OCD can drive him crazy during a normal day
+out and about, he found that it also comes in handy in his job as a Dev and also
+makes him ridiculously efficient when it comes to shopping.
+This talk gives a delightful view into a very orderly mind and makes a point
+that you can live your life with OCD.</p>
+
+<p><a href="http://devslovebacon.com/conferences/bacon-2014/talks/there-is-no-such-thing-as-work-life-balance-working-with-burnout">THERE IS NO SUCH THING AS WORK-LIFE BALANCE (WORKING WITH BURNOUT)</a></p>
+
+<p><a href="http://adamonishi.com">Adam Onishi</a> talks about having Burnout.
+I learned that it is not something that happens to you, but a tendency of overworking yourself,
+which will happen again if you are not careful.
+Apparently a strong intrinsic motivation, which lets you accomplish great things,
+is also the reason why you overwork yourself.
+A very personal talk.</p>
+
+<p><a href="http://devslovebacon.com/conferences/bacon-2014/talks/whisk-e-y-the-best-drink-in-the-world">WHISK(E)Y: THE BEST DRINK IN THE WORLD</a></p>
+
+<p>At the bacon is somewhat famous for having at least one talk about booze :).
+While you will not be able to take part in the wisky
+tasting <a href="http://www.billyabbott.co.uk/home/">Billy Abbott</a> still holes an interesting talk about the process of actually creating
+the spirit. Did you know that it is basically distilled beer?</p>
+
+<p><a href="http://devslovebacon.com/conferences/bacon-2014/talks/sweaty-horse-blanket-processing-the-natural-language-of-beer">SWEATY HORSE BLANKET - PROCESSING THE NATURAL LANGUAGE OF BEER</a></p>
+
+<p>Being a bit overwhelmed with the sheer about of choice of beer in Londoner pubs,
+<a href="http://benfields.net">Ben Fields</a> sets out to apply Natural language processing (NLP) to tackle the problem.
+Another highly informative and very entertaining talk.
+Obviously one can not teach the math behind things like
+<a href="http://en.wikipedia.org/wiki/Latent_Dirichlet_allocation">Latent Dirichlet allocation (LDA)</a>
+in a 30 min. talk, but he manages to give the gist across and just show what is
+possible with a bunch of text and an understanding of a domain.</p>
+
+<p><a href="http://devslovebacon.com/conferences/bacon-2014/talks/your-web-stack-would-betray-you-in-an-instant">YOUR WEB STACK WOULD BETRAY YOU IN AN INSTANT</a></p>
+
+<p>Security is a tricky thing. <a href="https://github.com/pimterry">Tim Perry</a> reiterates some exemplary incidents of
+different parts of the web stack in a funny well structured way.
+He also reminds us that best practices are best practices for a reason and that
+many of the incidents could have been avoided if people would run the test they have
+and read their bug trackers.</p>
+
+<h2>Conclusion</h2>
+
+<p>I really liked the <a href="http://devslovebacon.com/">Bacon 2014</a> for its lineup of
+interesting talk about all kind of things.
+You will probably not experience an scientific talk about implementation details
+or the latest distributed algorithm, but chances are you stumble across a talk
+that sparks an interest in
+<a href="http://devslovebacon.com/conferences/bacon-2014/talks/whisk-e-y-the-best-drink-in-the-world">Wisky</a>,
+<a href="http://devslovebacon.com/conferences/bacon-2014/talks/the-joy-of-blink-dot-ino-shining-a-light-on-working-with-hardware">Arduino programming</a>
+or even
+<a href="http://devslovebacon.com/conferences/bacon-2014/talks/the-benefits-of-powerlifting-for-the-desk-bound-geek">Powerlifting</a>.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Moving to London: Banks and Money]]></title>
+    <link href="http://Velrok.github.io/blog/2014/01/26/moving-to-london-banks-and-money/"/>
+    <updated>2014-01-26T15:05:00+00:00</updated>
+    <id>http://Velrok.github.io/blog/2014/01/26/moving-to-london-banks-and-money</id>
+    <content type="html"><![CDATA[<p><img src="/images/money.jpg" alt="money" /></p>
+
+<p>I moved to London two days ago to start my new job here.
+So this is an attempt to collect information and sources that I found useful.
+This article is specifically about Money and basic Banking stuff.</p>
+
+<!-- more -->
+
+
+<h2>Choosing a bank account for your income</h2>
+
+<p>When you are working in the UK chances are that your employer requires a UK
+bank account that holds your money in Pounds.
+"Current Account" is the technical term for an account that is designed to
+collect your income and pay your bills.
+I used <a href="http://www.moneysupermarket.com/current-accounts/search/results/?goal=CUR_INTEREST">money super market</a>
+to find an account suitable to my needs.
+They have good how-tos that cover the basics without being lengthy.</p>
+
+<p>You want to start this early, about 2-3 weeks before you move to the UK.
+This way your account is already set up and you can wire money into it, which
+can take days.
+I missed that and had to hustle with different account debit card limits and
+long money transaction times.
+As soon as you arrive you want to make an appointment to be authenticated.
+This will require you to turn up in person at a branch of the bank with your
+passport.
+Only after you have been authenticated can you withdraw money from your new
+account.</p>
+
+<p>You might get only a standard migrant account, since you will not have a local
+address yet.
+The account you have chosen online will only be available once you can provide
+a credit score and a local address.</p>
+
+<h2>Moving money between the UK and your homeland</h2>
+
+<p>The Current Account might be your primary account for any money business inside
+the UK but if you want to transfer money to a different country it will probably
+get very expensive, because they might charge you as much as 30£ for each transfer.
+They might also give you a slightly worse conversion rate, compared to what
+is possible.</p>
+
+<p>However there are money transfer institutions that specialize in moving money
+to different currencies.
+I used <a href="http://www.money.co.uk/money-transfers/money-transfer-to-germany.htm">money.co.uk</a>
+to get a list of institutions to choose from.
+Again which is the best depends on your circumstances, do you transfer money
+frequently, do you have to transfer large amounts and so forth.
+<a href="http://www.money.co.uk/money-transfers/money-transfer-to-germany.htm">money.co.uk</a>
+helped me to find a good fit for my needs (many low amount transactions
+to my private pension found).</p>
+
+<h3>bitcoin as an alternative?</h3>
+
+<p>If you only want to make a few transactions, and want to circumvent the cross
+country fees, you could try to use a crypto currency like
+<a href="http://www.coindesk.com/information/what-is-bitcoin/">Bitcoin</a> as an
+intermediary currency.
+I found <a href="http://www.coindesk.com/">CoinDesk</a> to be comprehensible.
+However at this point this is just an idea I might try in the next days / weeks.</p>
+
+<h2>Feedback</h2>
+
+<p>As I said I'm reporting to be best of my knowledge, which isn't much.
+If I got something wrong or if you have any remarks please let me
+know, in the comments.
+If this article help you I'm also happy for any shout out or comment.</p>
+
+<p>Let me know what you think!</p>
+
+<h2>Disclaimer</h2>
+
+<p>Everything written is my personal experience.
+I'm not an expert on this topics.</p>
+
+<p>For now all of this is strictly theoretical. As of this writing I have not
+signed any contract, because it is a Sunday and all institutions are closed.
+Should anything turn out to be totally off or different I will post an update.</p>
+
+<p>I do not receive any money from any of the mentions websites or institutions.</p>
+
+<p>I'm writing this disclaimer just because if came to me :).
+I have no idea what I'm doing ;) .
+Think for yourself ;P.</p>
+]]></content>
+  </entry>
+  
+</feed>
