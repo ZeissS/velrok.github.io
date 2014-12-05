@@ -4,7 +4,7 @@
   <title><![CDATA[Category: git | Mein(un)sinn]]></title>
   <link href="http://Velrok.github.io/blog/categories/git/atom.xml" rel="self"/>
   <link href="http://Velrok.github.io/"/>
-  <updated>2014-12-05T15:09:16+00:00</updated>
+  <updated>2014-12-05T15:14:32+00:00</updated>
   <id>http://Velrok.github.io/</id>
   <author>
     <name><![CDATA[velrok]]></name>
@@ -18,18 +18,19 @@
     <link href="http://Velrok.github.io/blog/2014/12/05/versioning-work-notes-with-git-on-mac/"/>
     <updated>2014-12-05T14:36:00+00:00</updated>
     <id>http://Velrok.github.io/blog/2014/12/05/versioning-work-notes-with-git-on-mac</id>
-    <content type="html"><![CDATA[<p>I started to keep a loose log of todos and related usefull information at work.
+    <content type="html"><![CDATA[<p>I started to keep a loose log of todo's and related useful information at work.
 This log is a simple text, file which I use in a append-only fashion.
 New information gets added at the top, using markdown notation.</p>
 
 <p>Our company provides we with a Google Account, so I put my notes into
-Google Drive to back it up. You can choose Dropbox or a privte git repository
+Google Drive to back it up. You can choose Dropbox or a private git repository
 for hat matter.</p>
 
 <p>But having just a plain file, makes it hard to keep track of when an entry was
 made. So I started to use git to take care of the versioning for me.
-I still keep my files in GDrive and do not push the git repo, because I'm only
-interessted in the versioning, and not in collaboration of backup.</p>
+I still keep my files in Google Drive and do not push the git repository,
+because I'm only
+interested in the versioning, and not in collaboration of backup.</p>
 
 <p>However I would like for commits to happen on a regular basis instead of me
 having to remember to also make a commit after changing a file.</p>
@@ -78,15 +79,15 @@ are noting more than xml files, which are easy enough to write my hand.</p>
 </plist>
 ```</p>
 
-<p><code>WorkingDirectory</code> sets the working directory for all the programm calls, which
+<p><code>WorkingDirectory</code> sets the working directory for all the program calls, which
 makes it very convenient to write out the necessary git calls.</p>
 
-<p><code>WatchPaths</code> defines an array of path to watch for changes, wich is a
+<p><code>WatchPaths</code> defines an array of path to watch for changes, which is a
 perfect fit for my notes versioning problem, because it facilitates the triggering
 of commits every time I save, but not during the long hours I might not change
 anything at all.</p>
 
-<p><code>ProgramArguments</code> is esencially the command line call separeted in its components.
+<p><code>ProgramArguments</code> is essentially the command line call separated in its components.
 I'm simply adding all the changed files and create a commit with a fixed message.</p>
 
 <p>You will obviously have to have your notes directory initialized as a
@@ -95,15 +96,15 @@ git repository <code>git init</code>.</p>
 <p>If it also contains files that you do not wish to have included I would recommend
 adding them to a <code>.gitignore</code> file.</p>
 
-<p>To accually register this job and have Launch Control run it you have to load
+<p>To actually register this job and have Launch Control run it you have to load
 your file <code>launchctl load velrok.gittify-notes.plist</code>.
-To stop excution of your script you need to unload it
+To stop execution of your script you need to unload it
 <code>launchctl unload velrok.gittify-notes.plist</code>.</p>
 
 <p>Now you should have your git versioned directory of plain text notes
-running and the launchctrl deamon trigger new commits every time you save
-your notes file. There is a slight delay of a coupple of secounds betwee the
-save and the acuall commit. Just run "git log" in your notes directory to see
+running and the launchctrl daemon trigger new commits every time you save
+your notes file. There is a slight delay of a couple of seconds between the
+save and the actual commit. Just run "git log" in your notes directory to see
 a log of commits.
 A call to <code>git blame notes.md</code> will show you the file contents with
 time stamps next to each line, so you know, when they changed last.</p>
