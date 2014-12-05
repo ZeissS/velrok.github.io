@@ -4,7 +4,7 @@
   <title><![CDATA[Mein(un)sinn]]></title>
   <link href="http://Velrok.github.io/atom.xml" rel="self"/>
   <link href="http://Velrok.github.io/"/>
-  <updated>2014-05-17T16:25:36+01:00</updated>
+  <updated>2014-12-05T15:09:16+00:00</updated>
   <id>http://Velrok.github.io/</id>
   <author>
     <name><![CDATA[velrok]]></name>
@@ -12,6 +12,128 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Versioning work notes with git on Mac]]></title>
+    <link href="http://Velrok.github.io/blog/2014/12/05/versioning-work-notes-with-git-on-mac/"/>
+    <updated>2014-12-05T14:36:00+00:00</updated>
+    <id>http://Velrok.github.io/blog/2014/12/05/versioning-work-notes-with-git-on-mac</id>
+    <content type="html"><![CDATA[<p>I started to keep a loose log of todos and related usefull information at work.
+This log is a simple text, file which I use in a append-only fashion.
+New information gets added at the top, using markdown notation.</p>
+
+<p>Our company provides we with a Google Account, so I put my notes into
+Google Drive to back it up. You can choose Dropbox or a privte git repository
+for hat matter.</p>
+
+<p>But having just a plain file, makes it hard to keep track of when an entry was
+made. So I started to use git to take care of the versioning for me.
+I still keep my files in GDrive and do not push the git repo, because I&#8217;m only
+interessted in the versioning, and not in collaboration of backup.</p>
+
+<p>However I would like for commits to happen on a regular basis instead of me
+having to remember to also make a commit after changing a file.</p>
+
+<p>Since the usage of cron is discouraged on mac I looked into using apples
+<code>launchctr deamon</code>.</p>
+
+<p>Launch Control works by loading job descriptions from <code>.plist</code> files, which
+are noting more than xml files, which are easy enough to write my hand.</p>
+
+<p>You will find your Launch Control files in <code>~/Library/LaunchAgents</code>.</p>
+
+<p>Here is the plist file I use for my notes <code>velrok.gittify-notes.plist</code>:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+</span><span class='line'><span class="cp">&lt;!DOCTYPE plist PUBLIC &quot;-//Apple//DTD PLIST 1.0//EN&quot; &quot;http://www.apple.com/DTDs/PropertyList-1.0.dtd&quot;&gt;</span>
+</span><span class='line'><span class="nt">&lt;plist</span> <span class="na">version=</span><span class="s">&quot;1.0&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'><span class="nt">&lt;dict&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;key&gt;</span>Label<span class="nt">&lt;/key&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;string&gt;</span>velrok.gittify-notes.plist<span class="nt">&lt;/string&gt;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nt">&lt;key&gt;</span>WorkingDirectory<span class="nt">&lt;/key&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;string&gt;</span>/Users/velok/Google Drive/notes<span class="nt">&lt;/string&gt;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nt">&lt;key&gt;</span>WatchPaths<span class="nt">&lt;/key&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;array&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;string&gt;</span>/Users/velok/Google Drive/notes<span class="nt">&lt;/string&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;/array&gt;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nt">&lt;key&gt;</span>ProgramArguments<span class="nt">&lt;/key&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;array&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;string&gt;</span>git<span class="nt">&lt;/string&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;string&gt;</span>commit<span class="nt">&lt;/string&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;string&gt;</span>-a<span class="nt">&lt;/string&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;string&gt;</span>-m<span class="nt">&lt;/string&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;string&gt;</span>&quot;snapshot&quot;<span class="nt">&lt;/string&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;/array&gt;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nt">&lt;key&gt;</span>ProcessType<span class="nt">&lt;/key&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;string&gt;</span>Background<span class="nt">&lt;/string&gt;</span>
+</span><span class='line'><span class="nt">&lt;/dict&gt;</span>
+</span><span class='line'><span class="nt">&lt;/plist&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><code>WorkingDirectory</code> sets the working directory for all the programm calls, which
+makes it very convenient to write out the necessary git calls.</p>
+
+<p><code>WatchPaths</code> defines an array of path to watch for changes, wich is a
+perfect fit for my notes versioning problem, because it facilitates the triggering
+of commits every time I save, but not during the long hours I might not change
+anything at all.</p>
+
+<p><code>ProgramArguments</code> is esencially the command line call separeted in its components.
+I&#8217;m simply adding all the changed files and create a commit with a fixed message.</p>
+
+<p>You will obviously have to have your notes directory initialized as a
+git repository <code>git init</code>.</p>
+
+<p>If it also contains files that you do not wish to have included I would recommend
+adding them to a <code>.gitignore</code> file.</p>
+
+<p>To accually register this job and have Launch Control run it you have to load
+your file <code>launchctl load velrok.gittify-notes.plist</code>.
+To stop excution of your script you need to unload it
+<code>launchctl unload velrok.gittify-notes.plist</code>.</p>
+
+<p>Now you should have your git versioned directory of plain text notes
+running and the launchctrl deamon trigger new commits every time you save
+your notes file. There is a slight delay of a coupple of secounds betwee the
+save and the acuall commit. Just run &#8220;git log&#8221; in your notes directory to see
+a log of commits.
+A call to <code>git blame notes.md</code> will show you the file contents with
+time stamps next to each line, so you know, when they changed last.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Developers Love Bacon - Conference]]></title>
