@@ -6,15 +6,18 @@ comments: true
 categories: clojure docker giantswarm
 ---
 
+<img style="float:left; height:190px" src="/images/giantswarm_logo_standard.png">
+<img style="height:190px" src="/images/docker.png"> 
+
 Recently I've been playing around with Clojure and [docker](https://www.docker.com/).
-Docker provides your app with an isolated conainer on a Linux machine, sharing the
+Docker provides your app with an isolated container on a Linux machine, sharing the
 same system resources, while isolating them from the other containers.
 This has the benefit of providing a separation between apps on a Linux host system,
-which is much more leight weigth than full blown VMs (Virtual Machines).
+which is much more light weigh than full blown VMs (Virtual Machines).
 
-In this blog post I will describe the settup I used to deploy my pet project named 
-money-balance (a clojure app) on [giantswarm.io](https://giantswarm.io/), a
-docker hoster in Germany. 
+In this blog post I will describe the setup I used to deploy my pet project named 
+money-balance (a Clojure app) on [giantswarm.io](https://giantswarm.io/), a
+docker host in Germany. 
 They are currently still in the alpha phase and looking for early adopters, but
 so far everything was working flawlessly for me. 
 You can find them on [gitter](https://gitter.im/giantswarm/users).
@@ -26,28 +29,28 @@ You can find them on [gitter](https://gitter.im/giantswarm/users).
 My app uses the usual combination of [compojure](https://github.com/weavejester/compojure)
 and [ring](https://github.com/ring-clojure/ring).
 Zaiste has a nice and short article which should set you up with a bare bone
-clojure web app skeleton. Feel free to ignore everything beyond the 
+Clojure web app skeleton. Feel free to ignore everything beyond the 
 backend section for now. [Article](http://zaiste.net/2014/02/web_applications_in_clojure_all_the_way_with_compojure_and_om/).
 
 My deployment process consists of the following steps.
 
 1. build a stand alone jar `lein ring uberjar`
 1. increment application version (mirrored in the docker image version)
-1. build a docker image with the nessesary tag so that the image is stored in the 
-   giantswarm repository insteat of docker hub
+1. build a docker image with the necessary tag so that the image is stored in the 
+   giantswarm repository instead of docker hub
 1. push the image into the giantswarm repository
 1. remove the old version of the application in giantswarm
-1. create the appp anew with the new version in giantswarm
+1. create the app anew with the new version in giantswarm
 1. start the new version
 
-A disclamer, this is moste likely not the most lean way of doing things.
+A disclaimer, this is most likely not the most lean way of doing things.
 For instance the whole versioning part of the deploy process could be
 omitted, but I had a phase where I wasn't sure if the repository's latest
 version of an image is the same as my local one.
-Accoring to the giantswarm support there is no way to find out if that true.
+According to the giantswarm support there is no way to find out if that true.
 So my process states an explicit image version.
 
-The deletion of the app and the recreation means that all services will be stoped
+The deletion of the app and the recreation means that all services will be stooped
 and all the data will be lost.
 For my app this is not an issue, because I'm using a dedicated service to host
 my database.
@@ -84,16 +87,16 @@ The `project.clj` is used by leiningen and declares all dependencies.
   :ring {:handler money-balance.web.server/app})
 ```
 
-The `plugins` section lists extentions to leiningen itself, for example `lein-ring`
-is a plugin which handles starting our app inside a jetty web server.
-Plugins sometimes look inside the `defproject` for configuration.
-For instance `:ring {:handler money-balance.web.server/app}` tell the ring plugin
+The `plugins` section lists extensions to leiningen itself, for example `lein-ring`
+is a plug-in which handles starting our app inside a jetty web server.
+Plug-ins sometimes look inside the `defproject` for configuration.
+For instance `:ring {:handler money-balance.web.server/app}` tell the ring plug-in
 where to find our main handler.
 
-**Note:** The ring-plugin is not be be confused with the ring depencency.
-The plugin is a extention to leiningen, which makes it more convenient to start
-a server and build a standalone uberjar, the ring dependencie is a abtraction
-that allows one to deal with requests and responses as clojure maps instead of
+**Note:** The ring-plugin is not be be confused with the ring dependency.
+The plug-in is a extention to leiningen, which makes it more convenient to start
+a server and build a standalone uberjar, the ring dependency is a abstraction
+that allows one to deal with requests and responses as Clojure maps instead of
 java objects.
 
 ## the Dockerfile
@@ -133,7 +136,7 @@ when the image is started. Thus when a new container comes up it will
 autostart the standalone jar file.
 
 **Side-note:** 
- - how I tryied to make the clojure image work
+ - how I tryied to make the Clojure image work
 
 ## the build.sh
 
@@ -201,12 +204,12 @@ Here is mine:
 }
 ```
 It declares an application named `money-balance` 
-`"app_name": "money-balance"`, wich has only one service `money-balance-service`
+`"app_name": "money-balance"`, which has only one service `money-balance-service`
 with only one component.
 `"image": "registry.giantswarm.io/velrok/money-balance:$version"` declares that
 our container should use our money-balance images, which has been build and
 pushed in the `build.sh` script.
-`$version` is a swarm client variable, which can be set later, when we accually
+`$version` is a swarm client variable, which can be set later, when we actually
 call the swarm client to start our app.
 It enables us to explicitly name the latest version, without the need to adjust
 the `swarm.json` file.
@@ -214,7 +217,7 @@ the `swarm.json` file.
 want our app to be reachable from the internet under the domain name 
 `money-balance.velrok.gigantic.io` and that our app excepts http requests on
 port 3000.
-Since I'm using a different service for my database, the acuall connection string
+Since I'm using a different service for my database, the actual connection string
 for the production database is set via the environment variable 
 `MONEY_BALANCE_DATABASE_URI`.
 
@@ -224,7 +227,7 @@ We can start up the app manually now, calling `swarm create swarm.json` and then
 
 ## the deploy.sh
 
-The deploy script is concerned about stoping the old version of the app
+The deploy script is concerned about stooping the old version of the app
 on the host and starting up the latest version instead.
 
 ```bash
@@ -241,19 +244,27 @@ giant swarm. This is rather drastic, since this will stop all services
 and remove all containers, loosing all the data that has been stored on any
 container.
 `swarm update` presents a more elegant alternative, which I'm still to explore 
-in the nex days.
-`swarm create --var=version=$(cat ./VERSION) swarm.json` recretes the app with
-the latest version specifyed in the VERSION file.
+in the next days.
+`swarm create --var=version=$(cat ./VERSION) swarm.json` recreates the app with
+the latest version specified in the VERSION file.
 
 `swarm start money-balance` starts up the application and
 `swarm status money-balance` returns the status of the app.
 
 ## conclusion
 
-- jar file deployment easiers approach
-- use java:7 as base image
-- giant swarm works well enough for pet projects
-- rollback feature missing
-- put migrations into deploy.sh?
+I found the [plain java image](https://registry.hub.docker.com/_/java/tags/manage/)
+to work best as the base image for my Clojure app by compiling it into a single
+jar file.
+If you prefer to have the lein command available on the docker container
+you can just use the [Clojure image](https://registry.hub.docker.com/u/library/clojure/)
+as the base image.
+Just be aware, that it will have to download all the project dependencies
+the first time you start it.
 
+Even so [giantswarm](https://giantswarm.io) is still in alpha it is working well
+so far. Definatly worth a shot if you are trying to get more experience with
+docker and want a free (for now) hoster.
 
+My current deployment process is lacking any rollback features as well as any
+migrations strategy.
