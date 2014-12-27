@@ -9,8 +9,8 @@
   <meta name="author" content="velrok">
 
   
-  <meta name="description" content="I started to keep a loose log of todo&#8217;s and related useful information at work.
-This log is a simple text, file which I use in a append-only &hellip;">
+  <meta name="description" content="Recently I&#8217;ve been playing around with Clojure and docker.
+Docker provides your app with an isolated container on a Linux machine, sharing the &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -83,6 +83,63 @@ This log is a simple text, file which I use in a append-only &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/12/21/deploying-clojure-apps-on-giant-swarm-docker/">Deploying Clojure Apps on Giant Swarm (Docker)</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-12-21T19:22:00+00:00" pubdate data-updated="true">Dec 21<span>st</span>, 2014</time>
+        
+         | <a href="/blog/2014/12/21/deploying-clojure-apps-on-giant-swarm-docker/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><img style="float:left; height:190px" src="/images/giantswarm_logo_standard.png">
+<img style="height:190px" src="/images/docker.png"></p>
+
+<p>Recently I&#8217;ve been playing around with Clojure and <a href="https://www.docker.com/">docker</a>.
+Docker provides your app with an isolated container on a Linux machine, sharing the
+same system resources, while isolating them from the other containers.
+This has the benefit of providing a separation between apps on a Linux host system,
+which is much more light weigh than full blown VMs (Virtual Machines).</p>
+
+<p>In this blog post I will describe the setup I used to deploy my pet project named
+money-balance (a Clojure app) on <a href="https://giantswarm.io/">giantswarm.io</a>, a
+docker host in Germany.
+They are currently still in the alpha phase and looking for early adopters, but
+so far everything was working flawlessly for me.
+You can find them on <a href="https://gitter.im/giantswarm/users">gitter</a>.</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2014/12/21/deploying-clojure-apps-on-giant-swarm-docker/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -687,6 +744,10 @@ Also since it&#8217;s hosted on <a href="www.github.com">github</a> - I will not
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/12/21/deploying-clojure-apps-on-giant-swarm-docker/">deploying clojure apps on giant swarm (docker)</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/12/05/versioning-work-notes-with-git-on-mac/">Versioning work notes with git on Mac</a>
       </li>
     
@@ -700,10 +761,6 @@ Also since it&#8217;s hosted on <a href="www.github.com">github</a> - I will not
     
       <li class="post">
         <a href="/blog/2013/09/27/clojure-lesson-learned/">Clojure Lesson Learned</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/07/17/clojure-ggetting-started/">Clojure Getting Started: Setting Up</a>
       </li>
     
   </ul>

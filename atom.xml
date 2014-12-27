@@ -4,7 +4,7 @@
   <title><![CDATA[Mein(un)sinn]]></title>
   <link href="http://Velrok.github.io/atom.xml" rel="self"/>
   <link href="http://Velrok.github.io/"/>
-  <updated>2014-12-05T15:14:32+00:00</updated>
+  <updated>2014-12-27T20:57:49+00:00</updated>
   <id>http://Velrok.github.io/</id>
   <author>
     <name><![CDATA[velrok]]></name>
@@ -12,6 +12,348 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[deploying clojure apps on giant swarm (docker)]]></title>
+    <link href="http://Velrok.github.io/blog/2014/12/21/deploying-clojure-apps-on-giant-swarm-docker/"/>
+    <updated>2014-12-21T19:22:00+00:00</updated>
+    <id>http://Velrok.github.io/blog/2014/12/21/deploying-clojure-apps-on-giant-swarm-docker</id>
+    <content type="html"><![CDATA[<p><img style="float:left; height:190px" src="http://Velrok.github.io/images/giantswarm_logo_standard.png">
+<img style="height:190px" src="http://Velrok.github.io/images/docker.png"></p>
+
+<p>Recently I&#8217;ve been playing around with Clojure and <a href="https://www.docker.com/">docker</a>.
+Docker provides your app with an isolated container on a Linux machine, sharing the
+same system resources, while isolating them from the other containers.
+This has the benefit of providing a separation between apps on a Linux host system,
+which is much more light weigh than full blown VMs (Virtual Machines).</p>
+
+<p>In this blog post I will describe the setup I used to deploy my pet project named
+money-balance (a Clojure app) on <a href="https://giantswarm.io/">giantswarm.io</a>, a
+docker host in Germany.
+They are currently still in the alpha phase and looking for early adopters, but
+so far everything was working flawlessly for me.
+You can find them on <a href="https://gitter.im/giantswarm/users">gitter</a>.</p>
+
+<!-- more -->
+
+
+<h2>Overview</h2>
+
+<p>My app uses the usual combination of <a href="https://github.com/weavejester/compojure">compojure</a>
+and <a href="https://github.com/ring-clojure/ring">ring</a>.
+Zaiste has a nice and short article which should set you up with a bare bone
+Clojure web app skeleton. Feel free to ignore everything beyond the
+backend section for now. <a href="http://zaiste.net/2014/02/web_applications_in_clojure_all_the_way_with_compojure_and_om/">Article</a>.</p>
+
+<p>My deployment process consists of the following steps.</p>
+
+<ol>
+<li>build a stand alone jar <code>lein ring uberjar</code></li>
+<li>increment application version (mirrored in the docker image version)</li>
+<li>build a docker image with the necessary tag so that the image is stored in the
+giantswarm repository instead of docker hub</li>
+<li>push the image into the giantswarm repository</li>
+<li>remove the old version of the application in giantswarm</li>
+<li>create the app anew with the new version in giantswarm</li>
+<li>start the new version</li>
+</ol>
+
+
+<p>A disclaimer, this is most likely not the most lean way of doing things.
+For instance the whole versioning part of the deploy process could be
+omitted, but I had a phase where I wasn&#8217;t sure if the repository&#8217;s latest
+version of an image is the same as my local one.
+According to the giantswarm support there is no way to find out if that true.
+So my process states an explicit image version.</p>
+
+<p>The deletion of the app and the recreation means that all services will be stooped
+and all the data will be lost.
+For my app this is not an issue, because I&#8217;m using a dedicated service to host
+my database.
+The swarm client has an update command, which is probably a better fit, and which
+I will give a spin in the next weeks.</p>
+
+<p>The rest of the article dives into the details and lists the source codes.</p>
+
+<h2>the project.clj</h2>
+
+<p>The <code>project.clj</code> is used by leiningen and declares all dependencies.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+</pre></td><td class='code'><pre><code class='clojure'><span class='line'><span class="p">(</span><span class="kd">defproject </span><span class="nv">money-balance</span> <span class="s">&quot;0.0.1&quot;</span>
+</span><span class='line'>  <span class="ss">:description</span> <span class="s">&quot;FIXME: write description&quot;</span>
+</span><span class='line'>  <span class="ss">:url</span> <span class="s">&quot;http://example.com/FIXME&quot;</span>
+</span><span class='line'>  <span class="ss">:license</span> <span class="p">{</span><span class="ss">:name</span> <span class="s">&quot;Eclipse Public License&quot;</span>
+</span><span class='line'>            <span class="ss">:url</span> <span class="s">&quot;http://www.eclipse.org/legal/epl-v10.html&quot;</span><span class="p">}</span>
+</span><span class='line'>  <span class="ss">:dependencies</span> <span class="p">[[</span><span class="nv">org.clojure/clojure</span> <span class="s">&quot;1.6.0&quot;</span><span class="p">]</span>
+</span><span class='line'>                 <span class="p">[</span><span class="nv">ring/ring-json</span> <span class="s">&quot;0.3.1&quot;</span><span class="p">]</span>
+</span><span class='line'>                 <span class="p">[</span><span class="nv">compojure</span> <span class="s">&quot;1.1.6&quot;</span><span class="p">]</span>
+</span><span class='line'>                 <span class="p">[</span><span class="nv">hiccup</span> <span class="s">&quot;1.0.5&quot;</span><span class="p">]</span>
+</span><span class='line'>                 <span class="p">[</span><span class="nv">cheshire</span> <span class="s">&quot;5.3.1&quot;</span><span class="p">]</span>
+</span><span class='line'>                 <span class="p">[</span><span class="nv">ring</span> <span class="s">&quot;1.2.2&quot;</span><span class="p">]</span>
+</span><span class='line'>                 <span class="p">[</span><span class="nv">ring-middleware-format</span> <span class="s">&quot;0.3.0&quot;</span> <span class="ss">:exclusions</span> <span class="p">[</span><span class="nv">org.clojure/tools.reader</span><span class="p">]]</span>
+</span><span class='line'>                 <span class="p">[</span><span class="nv">clj-time</span> <span class="s">&quot;0.6.0&quot;</span><span class="p">]]</span>
+</span><span class='line'>  <span class="ss">:plugins</span> <span class="p">[[</span><span class="nv">lein-ring</span> <span class="s">&quot;0.8.10&quot;</span><span class="p">]]</span>
+</span><span class='line'>  <span class="ss">:min-lein-version</span> <span class="s">&quot;2.0.0&quot;</span>
+</span><span class='line'>  <span class="ss">:main</span> <span class="nv">money-balance.web.server</span>
+</span><span class='line'>  <span class="ss">:profiles</span> <span class="p">{</span><span class="ss">:production</span> <span class="p">{</span><span class="ss">:env</span> <span class="p">{</span><span class="ss">:production</span> <span class="nv">true</span><span class="p">}}</span>
+</span><span class='line'>             <span class="ss">:dev</span> <span class="p">{</span><span class="ss">:dependencies</span> <span class="p">[[</span><span class="nv">midje</span> <span class="s">&quot;1.6.3&quot;</span><span class="p">]]}</span>
+</span><span class='line'>             <span class="ss">:uberjar</span> <span class="p">{</span><span class="ss">:aot</span> <span class="ss">:all</span><span class="p">}}</span>
+</span><span class='line'>  <span class="ss">:uberjar-name</span> <span class="s">&quot;money-balance.jar&quot;</span>
+</span><span class='line'>  <span class="ss">:ring</span> <span class="p">{</span><span class="ss">:handler</span> <span class="nv">money-balance.web.server/app</span><span class="p">})</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The <code>plugins</code> section lists extensions to leiningen itself, for example <code>lein-ring</code>
+is a plug-in which handles starting our app inside a jetty web server.
+Plug-ins sometimes look inside the <code>defproject</code> for configuration.
+For instance <code>:ring {:handler money-balance.web.server/app}</code> tell the ring plug-in
+where to find our main handler.</p>
+
+<p><strong>Note:</strong> The ring-plugin is not be be confused with the ring dependency.
+The plug-in is a extention to leiningen, which makes it more convenient to start
+a server and build a standalone uberjar, the ring dependency is a abstraction
+that allows one to deal with requests and responses as Clojure maps instead of
+java objects.</p>
+
+<h2>the Dockerfile</h2>
+
+<p>For a introduction to docker head to <a href="https://www.docker.com/">https://www.docker.com/</a>.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="no">FROM</span> <span class="ss">java</span><span class="p">:</span><span class="mi">7</span>
+</span><span class='line'><span class="no">MAINTAINER</span> <span class="no">Velrok</span>
+</span><span class='line'>
+</span><span class='line'><span class="no">RUN</span> <span class="n">mkdir</span> <span class="o">-</span><span class="nb">p</span> <span class="sr">/opt/mone</span><span class="n">y</span><span class="o">-</span><span class="n">balance</span>
+</span><span class='line'><span class="no">ADD</span> <span class="o">.</span><span class="n">/target</span><span class="o">/</span><span class="n">money</span><span class="o">-</span><span class="n">balance</span><span class="o">.</span><span class="n">jar</span> <span class="sr">/opt/mone</span><span class="n">y</span><span class="o">-</span><span class="n">balance</span><span class="o">/</span><span class="n">money</span><span class="o">-</span><span class="n">balance</span><span class="o">.</span><span class="n">jar</span>
+</span><span class='line'><span class="no">ADD</span> <span class="o">.</span><span class="n">/</span><span class="no">VERSION</span> <span class="sr">/opt/mone</span><span class="n">y</span><span class="o">-</span><span class="n">balance</span><span class="o">/</span><span class="no">VERSION</span>
+</span><span class='line'><span class="no">ADD</span> <span class="o">.</span><span class="n">/</span><span class="kp">public</span> <span class="sr">/opt/mone</span><span class="n">y</span><span class="o">-</span><span class="n">balance</span><span class="o">/</span><span class="kp">public</span>
+</span><span class='line'>
+</span><span class='line'><span class="no">WORKDIR</span> <span class="sr">/opt/mone</span><span class="n">y</span><span class="o">-</span><span class="n">balance</span>
+</span><span class='line'>
+</span><span class='line'><span class="no">EXPOSE</span> <span class="mi">3000</span>
+</span><span class='line'><span class="no">ENV</span> <span class="no">APP_ENV</span> <span class="n">production</span>
+</span><span class='line'>
+</span><span class='line'><span class="no">ENTRYPOINT</span> <span class="n">java</span> <span class="o">-</span><span class="n">jar</span> <span class="n">money</span><span class="o">-</span><span class="n">balance</span><span class="o">.</span><span class="n">jar</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>While docker hub provides a <a href="https://registry.hub.docker.com/u/library/clojure/">Clojure image</a>
+I found the plain <a href="https://registry.hub.docker.com/_/java/">java base image</a> to be a better
+fit for the job.
+It is simply easier to build a standalone jar on your machine and copy it into a
+plain java image.
+Having said that, the Clojure image worked without errors for me. If you prefer
+to have the lein command at hand on the machine you may as well use that one.</p>
+
+<p><code>ADD ./target/money-balance.jar /opt/money-balance/money-balance.jar</code> copies a local build into the docker image.
+<code>EXPOSE 3000</code> takes care of exposing the webserver port to the host system, which is
+nessesary to allow http connections into the container.
+<code>ENTRYPOINT java -jar money-balance.jar</code> tells docker, that this command should be run
+when the image is started. Thus when a new container comes up it will
+autostart the standalone jar file.</p>
+
+<p><strong>Side-note:</strong>
+ - how I tryied to make the Clojure image work</p>
+
+<h2>the build.sh</h2>
+
+<p>The build script is concerned with building a docker image, with the application
+in it and pushing the image into the swarm registry so it&#8217;s available for deployment.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="c">#!/bin/bash</span>
+</span><span class='line'><span class="nb">set</span> -e
+</span><span class='line'>
+</span><span class='line'>lein ring uberjar
+</span><span class='line'>./increment_version.rb <span class="nv">$@</span>
+</span><span class='line'>docker build --rm<span class="o">=</span><span class="nb">true</span> -t registry.giantswarm.io/velrok/money-balance:<span class="k">$(</span>cat ./VERSION<span class="k">)</span> .
+</span><span class='line'>docker push registry.giantswarm.io/velrok/money-balance:<span class="k">$(</span>cat ./VERSION<span class="k">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><code>lein ring uberjar</code> creates a standalone jar, which starts the app on port 3000.
+<code>./increment_version.rb $@</code> is a small script, that increaments the version string
+in my <code>VERSION</code> file.
+<code>docker build --rm=true -t registry.giantswarm.io/velrok/money-balance:$(cat ./VERSION) .</code>
+instructs docker to build a new image, taged with the giant swarm repository and
+my explicit latest version from the <code>VERSION</code> file.
+<code>docker push registry.giantswarm.io/velrok/money-balance:$(cat ./VERSION)</code>
+pushes the image to the giant swarm docker repository, so they can start
+containers with the latest version.</p>
+
+<p>I found it reassuring to have thouse commands in a simple <code>build.sh</code> just to
+make sure I never forget to tag my image with the correct repository, because
+docker will publish your image to dockerhub by default.</p>
+
+<p>If you don&#8217;t care about explicit verisons just use <code>latest</code> and don&#8217;t maintain
+a <code>VERSION</code> file.
+<code>docker build --rm=true -t registry.giantswarm.io/velrok/money-balance:latest .</code></p>
+
+<h2>deploying to giant swarm</h2>
+
+<p>In order to deploy to giantswarm you will need an account and the command
+line client. Follow this <a href="file:///Users/waldemarschwan/webpages/docs.giantswarm.io/installation/cheatsheet/index.html_">setup guide</a>
+to get started.</p>
+
+<p>You describe our application in terms of services and components in a <code>swarm.json</code>
+file.
+Here is mine:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+</pre></td><td class='code'><pre><code class='json'><span class='line'><span class="p">{</span>
+</span><span class='line'>  <span class="nt">&quot;app_name&quot;</span><span class="p">:</span> <span class="s2">&quot;money-balance&quot;</span><span class="p">,</span>
+</span><span class='line'>  <span class="nt">&quot;services&quot;</span><span class="p">:</span> <span class="p">[</span>
+</span><span class='line'>    <span class="p">{</span>
+</span><span class='line'>      <span class="nt">&quot;service_name&quot;</span><span class="p">:</span> <span class="s2">&quot;money-balance-service&quot;</span><span class="p">,</span>
+</span><span class='line'>      <span class="nt">&quot;components&quot;</span><span class="p">:</span> <span class="p">[</span>
+</span><span class='line'>        <span class="p">{</span>
+</span><span class='line'>          <span class="nt">&quot;component_name&quot;</span><span class="p">:</span> <span class="s2">&quot;money-balance&quot;</span><span class="p">,</span>
+</span><span class='line'>          <span class="nt">&quot;image&quot;</span><span class="p">:</span> <span class="s2">&quot;registry.giantswarm.io/velrok/money-balance:$version&quot;</span><span class="p">,</span>
+</span><span class='line'>          <span class="nt">&quot;ports&quot;</span><span class="p">:</span> <span class="p">[</span> <span class="s2">&quot;3000/tcp&quot;</span> <span class="p">],</span>
+</span><span class='line'>          <span class="nt">&quot;domains&quot;</span><span class="p">:</span> <span class="p">{</span> <span class="nt">&quot;money-balance.velrok.gigantic.io&quot;</span><span class="p">:</span> <span class="s2">&quot;3000&quot;</span> <span class="p">},</span>
+</span><span class='line'>          <span class="nt">&quot;env&quot;</span> <span class="p">:</span> <span class="p">[</span>
+</span><span class='line'>            <span class="s2">&quot;APP_ENV=production&quot;</span><span class="p">,</span>
+</span><span class='line'>            <span class="s2">&quot;MONEY_BALANCE_DATABASE_URI=postgres://xxx&quot;</span>
+</span><span class='line'>          <span class="p">]</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>      <span class="p">]</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>  <span class="p">]</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>It declares an application named <code>money-balance</code>
+<code>"app_name": "money-balance"</code>, which has only one service <code>money-balance-service</code>
+with only one component.
+<code>"image": "registry.giantswarm.io/velrok/money-balance:$version"</code> declares that
+our container should use our money-balance images, which has been build and
+pushed in the <code>build.sh</code> script.
+<code>$version</code> is a swarm client variable, which can be set later, when we actually
+call the swarm client to start our app.
+It enables us to explicitly name the latest version, without the need to adjust
+the <code>swarm.json</code> file.
+<code>"domains": { "money-balance.velrok.gigantic.io": "3000" }</code> declares that we
+want our app to be reachable from the internet under the domain name
+<code>money-balance.velrok.gigantic.io</code> and that our app excepts http requests on
+port 3000.
+Since I&#8217;m using a different service for my database, the actual connection string
+for the production database is set via the environment variable
+<code>MONEY_BALANCE_DATABASE_URI</code>.</p>
+
+<p>We can start up the app manually now, calling <code>swarm create swarm.json</code> and then
+<code>swarm start money-balance</code>.</p>
+
+<h2>the deploy.sh</h2>
+
+<p>The deploy script is concerned about stooping the old version of the app
+on the host and starting up the latest version instead.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>swarm delete -y money-balance
+</span><span class='line'>swarm create --var<span class="o">=</span><span class="nv">version</span><span class="o">=</span><span class="k">$(</span>cat ./VERSION<span class="k">)</span> swarm.json
+</span><span class='line'>sleep 1
+</span><span class='line'>swarm start money-balance
+</span><span class='line'>sleep 1
+</span><span class='line'>swarm status money-balance
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><code>swarm delete -y money-balance</code> deletes the old version of the app from
+giant swarm. This is rather drastic, since this will stop all services
+and remove all containers, loosing all the data that has been stored on any
+container.
+<code>swarm update</code> presents a more elegant alternative, which I&#8217;m still to explore
+in the next days.
+<code>swarm create --var=version=$(cat ./VERSION) swarm.json</code> recreates the app with
+the latest version specified in the VERSION file.</p>
+
+<p><code>swarm start money-balance</code> starts up the application and
+<code>swarm status money-balance</code> returns the status of the app.</p>
+
+<h2>conclusion</h2>
+
+<p>I found the <a href="https://registry.hub.docker.com/_/java/tags/manage/">plain java image</a>
+to work best as the base image for my Clojure app by compiling it into a single
+jar file.
+If you prefer to have the lein command available on the docker container
+you can just use the <a href="https://registry.hub.docker.com/u/library/clojure/">Clojure image</a>
+as the base image.
+Just be aware, that it will have to download all the project dependencies
+the first time you start it.</p>
+
+<p>Even so <a href="https://giantswarm.io">giantswarm</a> is still in alpha it is working well
+so far. Definatly worth a shot if you are trying to get more experience with
+docker and want a free (for now) hoster.</p>
+
+<p>My current deployment process is lacking any rollback features as well as any
+migrations strategy.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Versioning work notes with git on Mac]]></title>
