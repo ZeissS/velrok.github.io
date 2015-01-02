@@ -130,7 +130,7 @@ to have the lein command at hand on the machine you may as well use that one.
 
 `ADD ./target/money-balance.jar /opt/money-balance/money-balance.jar` copies a local build into the docker image.
 `EXPOSE 3000` takes care of exposing the webserver port to the host system, which is
-nessesary to allow http connections into the container.
+necessary to allow http connections into the container.
 `ENTRYPOINT java -jar money-balance.jar` tells docker, that this command should be run
 when the image is started. Thus when a new container comes up it will
 autostart the standalone jar file.
@@ -154,10 +154,10 @@ docker push registry.giantswarm.io/velrok/money-balance:$(cat ./VERSION)
 ```
 
 `lein ring uberjar` creates a standalone jar, which starts the app on port 3000.
-`./increment_version.rb $@` is a small script, that increaments the version string
+`./increment_version.rb $@` is a small script, that increments the version string
 in my `VERSION` file. 
 `docker build --rm=true -t registry.giantswarm.io/velrok/money-balance:$(cat ./VERSION) .`
-instructs docker to build a new image, taged with the giant swarm repository and
+instructs docker to build a new image, tagged with the giant swarm repository and
 my explicit latest version from the `VERSION` file.
 `docker push registry.giantswarm.io/velrok/money-balance:$(cat ./VERSION)`
 pushes the image to the giant swarm docker repository, so they can start
@@ -167,14 +167,14 @@ I found it reassuring to have thouse commands in a simple `build.sh` just to
 make sure I never forget to tag my image with the correct repository, because
 docker will publish your image to dockerhub by default.
 
-If you don't care about explicit verisons just use `latest` and don't maintain
+If you don't care about explicit versions just use `latest` and don't maintain
 a `VERSION` file.
 `docker build --rm=true -t registry.giantswarm.io/velrok/money-balance:latest .`
 
 ## deploying to giant swarm
 
 In order to deploy to giantswarm you will need an account and the command
-line client. Follow this [setup guide](file:///Users/waldemarschwan/webpages/docs.giantswarm.io/installation/cheatsheet/index.html_)
+line client. Follow this [setup guide](http://docs.giantswarm.io/installation/cheatsheet/index.html)
 to get started.
 
 You describe our application in terms of services and components in a `swarm.json`
@@ -203,8 +203,9 @@ Here is mine:
   ]
 }
 ```
+
 It declares an application named `money-balance` 
-`"app_name": "money-balance"`, which has only one service `money-balance-service`
+(`"app_name": "money-balance"`), which has only one service `money-balance-service`
 with only one component.
 `"image": "registry.giantswarm.io/velrok/money-balance:$version"` declares that
 our container should use our money-balance images, which has been build and
@@ -227,7 +228,7 @@ We can start up the app manually now, calling `swarm create swarm.json` and then
 
 ## the deploy.sh
 
-The deploy script is concerned about stooping the old version of the app
+The deploy script is concerned about stoping the old version of the app
 on the host and starting up the latest version instead.
 
 ```bash
@@ -263,7 +264,7 @@ Just be aware, that it will have to download all the project dependencies
 the first time you start it.
 
 Even so [giantswarm](https://giantswarm.io) is still in alpha it is working well
-so far. Definatly worth a shot if you are trying to get more experience with
+so far. Definetly worth a shot if you are trying to get more experience with
 docker and want a free (for now) hoster.
 
 My current deployment process is lacking any rollback features as well as any
