@@ -50,7 +50,7 @@ version of an image is the same as my local one.
 According to the giantswarm support there is no way to find out if that true.
 So my process states an explicit image version.
 
-The deletion of the app and the recreation means that all services will be stooped
+The deletion of the app and the recreation means that all services will be stopped
 and all the data will be lost.
 For my app this is not an issue, because I'm using a dedicated service to host
 my database.
